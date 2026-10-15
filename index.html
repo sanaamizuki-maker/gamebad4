@@ -1,0 +1,3846 @@
+<!DOCTYPE html>
+<html lang="ms" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Roblox Obby Arab: Cabaran Ayat Bahasa Arab Tahun 4</title>
+  <style>
+    :root {
+      --stadium-midnight: #111216;
+      --stadium-navy: #191b1d;
+      --stadium-royal: #232527;
+      --stadium-blue: #2d3035;
+      --stadium-cyan: #02b757;
+      --stadium-electric: #00a2ff;
+      --stadium-gold: #ffb703;
+      --stadium-silver: #e2e8f0;
+      --pitch-dark: #1e2229;
+      --pitch-light: #2b303a;
+      --danger: #ff3b5c;
+      --success: #02b757;
+      --warning: #ffb703;
+      --card-bg: rgba(25, 27, 29, 0.95);
+      --border-glow: rgba(0, 162, 255, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 50% 0%, #0d2b6b 0%, #06102e 45%, #020514 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Stadium Floodlights & Star Pattern Background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -20%;
+      left: -10%;
+      width: 120%;
+      height: 65%;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(0, 187, 249, 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 10%, rgba(0, 245, 212, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 0%, rgba(255, 209, 102, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.14;
+      background-image: radial-gradient(#ffffff 1px, transparent 1px), radial-gradient(#00bbf9 1px, transparent 1px);
+      background-size: 50px 50px;
+      background-position: 0 0, 25px 25px;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    /* Header Banner */
+    .stadium-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      background: linear-gradient(135deg, rgba(6, 21, 61, 0.95) 0%, rgba(0, 48, 115, 0.9) 50%, rgba(4, 15, 45, 0.95) 100%);
+      border: 1.5px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 16px 24px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.55), inset 0 0 25px rgba(0, 187, 249, 0.12);
+      margin-bottom: 22px;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .starball-logo {
+      width: 62px;
+      height: 62px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 10px rgba(0, 245, 212, 0.55));
+      animation: slowSpin 28s linear infinite;
+    }
+
+    @keyframes slowSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .brand-titles .league-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: var(--stadium-gold);
+      background: rgba(255, 209, 102, 0.14);
+      border: 1px solid rgba(255, 209, 102, 0.4);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 4px;
+    }
+
+    .brand-titles h1 {
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      background: linear-gradient(90deg, #ffffff, #a8ecff, #ffd166);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-titles p {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-icon {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #fff;
+      padding: 9px 14px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-icon:hover {
+      background: rgba(0, 245, 212, 0.18);
+      border-color: var(--stadium-cyan);
+      transform: translateY(-1px);
+    }
+
+    .btn-teacher-portal {
+      background: linear-gradient(135deg, rgba(255, 209, 102, 0.22), rgba(251, 133, 0, 0.22));
+      border: 1.5px solid var(--stadium-gold);
+      color: var(--stadium-gold);
+    }
+
+    .btn-teacher-portal:hover {
+      background: var(--stadium-gold);
+      color: #03071e;
+    }
+
+    /* Screens */
+    .screen {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Glass Cards */
+    .stadium-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(0, 187, 249, 0.28);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    /* Welcome / Login Screen */
+    .login-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 820px) {
+      .login-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+
+    .section-subtitle {
+      font-size: 0.92rem;
+      color: #94a3b8;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--stadium-cyan);
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      background: rgba(3, 10, 32, 0.85);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--stadium-cyan);
+      box-shadow: 0 0 0 3px rgba(0, 245, 212, 0.2);
+    }
+
+    /* Dedicated Class Selection Cards (4 Proaktif & 4 Progresif Only) */
+    .class-selector-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .class-option-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      border-radius: 14px;
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .class-option-card:hover {
+      background: rgba(0, 187, 249, 0.12);
+      border-color: rgba(0, 187, 249, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .class-option-card.selected {
+      background: rgba(0, 245, 212, 0.16);
+      border-color: var(--stadium-cyan);
+      box-shadow: 0 0 18px rgba(0, 245, 212, 0.28);
+    }
+
+    .class-radio-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .class-option-card.selected .class-radio-dot {
+      border-color: var(--stadium-cyan);
+      background: var(--stadium-cyan);
+    }
+
+    .class-option-card.selected .class-radio-dot::after {
+      content: "✓";
+      color: #03071e;
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    .class-option-title {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .class-option-sub {
+      font-size: 0.76rem;
+      color: #cbd5e1;
+    }
+
+    /* Team / Jersey Selector (9 Famous European Club Nicknames) */
+    .jersey-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 500px) {
+      .jersey-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .jersey-option {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
+      padding: 10px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .jersey-option:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .jersey-option.selected {
+      border-color: var(--stadium-gold);
+      background: rgba(255, 209, 102, 0.15);
+      box-shadow: 0 0 15px rgba(255, 209, 102, 0.3);
+    }
+
+    .jersey-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      margin: 0 auto 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.86rem;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
+    }
+
+    .jersey-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    /* Scoring Rules Box */
+    .rules-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .rules-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(3, 12, 38, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+    }
+
+    .pts-badge {
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+    }
+
+    .pts-5 { background: rgba(6, 214, 160, 0.2); color: #06d6a0; border: 1px solid #06d6a0; }
+    .pts-4 { background: rgba(0, 187, 249, 0.2); color: #38bdf8; border: 1px solid #38bdf8; }
+    .pts-3 { background: rgba(255, 209, 102, 0.2); color: #ffd166; border: 1px solid #ffd166; }
+    .pts-2 { background: rgba(251, 133, 0, 0.2); color: #fb8500; border: 1px solid #fb8500; }
+    .pts-1 { background: rgba(255, 77, 109, 0.2); color: #ff4d6d; border: 1px solid #ff4d6d; }
+
+    .btn-primary {
+      width: 100%;
+      padding: 15px 24px;
+      font-size: 1.08rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      color: #03071e;
+      background: linear-gradient(135deg, #00f5d4 0%, #00bbf9 55%, #ffd166 100%);
+      box-shadow: 0 8px 25px rgba(0, 245, 212, 0.4);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 245, 212, 0.6);
+    }
+
+    /* Scoreboard HUD (TV Broadcast Style) */
+    .broadcast-hud {
+      display: grid;
+      grid-template-columns: 1.2fr 1.6fr 1.2fr;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(90deg, #040d29 0%, #0b2159 50%, #040d29 100%);
+      border: 2px solid rgba(0, 245, 212, 0.45);
+      border-radius: 18px;
+      padding: 12px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+    }
+
+    @media (max-width: 720px) {
+      .broadcast-hud {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hud-player {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .hud-player {
+        justify-content: center;
+      }
+    }
+
+    .hud-player-info .p-name {
+      font-weight: 800;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .hud-player-info .p-class {
+      font-size: 0.8rem;
+      color: var(--stadium-gold);
+      font-weight: 700;
+    }
+
+    .hud-center {
+      text-align: center;
+    }
+
+    .match-progress-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .match-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .match-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: #cbd5e1;
+      transition: all 0.25s;
+    }
+
+    .match-dot.current {
+      border-color: var(--stadium-gold);
+      background: var(--stadium-gold);
+      color: #03071e;
+      transform: scale(1.18);
+      box-shadow: 0 0 10px var(--stadium-gold);
+    }
+
+    .match-dot.done-perfect {
+      background: var(--success);
+      border-color: var(--success);
+      color: #03071e;
+    }
+
+    .match-dot.done-retry {
+      background: var(--stadium-electric);
+      border-color: var(--stadium-electric);
+      color: #03071e;
+    }
+
+    .hud-stats {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      align-items: center;
+    }
+
+    @media (max-width: 720px) {
+      .hud-stats {
+        justify-content: center;
+      }
+    }
+
+    .stat-box {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 6px 14px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-box .s-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      color: #94a3b8;
+      letter-spacing: 0.8px;
+    }
+
+    .stat-box .s-val {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--stadium-cyan);
+    }
+
+    .stat-box.gold .s-val {
+      color: var(--stadium-gold);
+    }
+
+    /* Interactive Football Pitch Visual */
+    .stadium-pitch {
+      position: relative;
+      background: repeating-linear-gradient(
+        90deg,
+        #115e38 0px,
+        #115e38 45px,
+        #157347 45px,
+        #157347 90px
+      );
+      border: 3px solid rgba(255, 255, 255, 0.85);
+      border-radius: 18px;
+      height: 115px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.55), 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    .pitch-center-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(255,255,255,0.65);
+    }
+
+    .pitch-center-circle {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 68px;
+      height: 68px;
+      border: 2px solid rgba(255,255,255,0.65);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .pitch-penalty-left, .pitch-penalty-right {
+      position: absolute;
+      top: 18%;
+      bottom: 18%;
+      width: 55px;
+      border: 2px solid rgba(255,255,255,0.65);
+    }
+
+    .pitch-penalty-left {
+      left: 0;
+      border-left: none;
+    }
+
+    .pitch-penalty-right {
+      right: 0;
+      border-right: none;
+      background: rgba(255, 209, 102, 0.12);
+    }
+
+    .goal-post-right {
+      position: absolute;
+      right: 4px;
+      top: 28%;
+      bottom: 28%;
+      width: 14px;
+      border: 3px solid #ffffff;
+      border-right: 3px dashed #ffd166;
+      background: repeating-linear-gradient(45deg, rgba(255,255,255,0.2) 0, rgba(255,255,255,0.2) 3px, transparent 3px, transparent 6px);
+    }
+
+    .ball-runner {
+      position: absolute;
+      top: 50%;
+      left: 8%;
+      transform: translate(-50%, -50%);
+      transition: left 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.4s ease;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ball-icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+      transition: transform 0.5s ease;
+    }
+
+    .ball-runner.goal-anim .ball-icon {
+      transform: scale(1.35) rotate(720deg);
+    }
+
+    .ball-tag {
+      background: rgba(3, 7, 30, 0.88);
+      color: var(--stadium-gold);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--stadium-gold);
+      white-space: nowrap;
+      margin-top: -2px;
+    }
+
+    .pitch-banner-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(3, 7, 30, 0.78);
+      z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .pitch-banner-overlay.show {
+      opacity: 1;
+    }
+
+    .goal-text {
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--stadium-gold);
+      text-shadow: 0 0 20px rgba(255, 209, 102, 0.8);
+      animation: popScale 0.45s ease;
+    }
+
+    @keyframes popScale {
+      0% { transform: scale(0.5); opacity: 0; }
+      80% { transform: scale(1.12); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Question Arena */
+    .question-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .q-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 187, 249, 0.16);
+      border: 1px solid var(--stadium-electric);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .attempt-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .potential-points {
+      font-size: 0.88rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(6, 214, 160, 0.18);
+      border: 1px solid var(--success);
+      color: var(--success);
+    }
+
+    .instruction-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--stadium-gold);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 18px;
+    }
+
+    .instruction-text {
+      font-size: 0.94rem;
+      color: #e2e8f0;
+    }
+
+    .meaning-hint {
+      font-size: 0.85rem;
+      color: var(--stadium-gold);
+      font-weight: 600;
+      background: rgba(255, 209, 102, 0.12);
+      padding: 5px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 209, 102, 0.3);
+    }
+
+    /* Answer Dropzone (RTL Arabic Sentence Builder) */
+    .zone-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .rtl-direction-indicator {
+      color: var(--stadium-cyan);
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sentence-slot-area {
+      dir: rtl;
+      direction: rtl;
+      min-height: 98px;
+      background: rgba(2, 8, 26, 0.85);
+      border: 2.5px dashed rgba(0, 245, 212, 0.45);
+      border-radius: 18px;
+      padding: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      margin-bottom: 22px;
+      transition: all 0.25s ease;
+    }
+
+    .sentence-slot-area.shake {
+      animation: shakeAnim 0.45s ease;
+      border-color: var(--danger);
+      background: rgba(255, 77, 109, 0.1);
+    }
+
+    .sentence-slot-area.correct-glow {
+      border-style: solid;
+      border-color: var(--success);
+      background: rgba(6, 214, 160, 0.12);
+      box-shadow: 0 0 25px rgba(6, 214, 160, 0.25);
+    }
+
+    @keyframes shakeAnim {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    .empty-slot-placeholder {
+      width: 100%;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.95rem;
+      font-style: italic;
+      direction: ltr;
+      pointer-events: none;
+    }
+
+    /* Word Bank Area */
+    .word-bank-area {
+      dir: rtl;
+      direction: rtl;
+      min-height: 92px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
+      padding: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    /* Arabic Word Cards */
+    .arabic-word-card {
+      font-family: 'Traditional Arabic', 'Amiri', 'Scheherazade New', 'Geeza Pro', 'Segoe UI', Tahoma, sans-serif;
+      font-size: clamp(1.55rem, 3.2vw, 2.05rem);
+      font-weight: 700;
+      line-height: 1.45;
+      padding: 10px 22px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #102a6b 0%, #07163d 100%);
+      border: 2px solid var(--stadium-electric);
+      color: #ffffff;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .arabic-word-card:hover {
+      transform: translateY(-4px) scale(1.03);
+      border-color: var(--stadium-gold);
+      box-shadow: 0 10px 22px rgba(0, 187, 249, 0.35);
+    }
+
+    .arabic-word-card:active {
+      transform: scale(0.96);
+    }
+
+    .arabic-word-card.in-slot {
+      background: linear-gradient(145deg, #003566 0%, #001d3d 100%);
+      border-color: var(--stadium-cyan);
+    }
+
+    .arabic-word-card .word-order-num {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--stadium-cyan);
+      color: #03071e;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Feedback Message Banner */
+    .feedback-banner {
+      display: none;
+      padding: 14px 18px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .feedback-banner.show {
+      display: flex;
+    }
+
+    .feedback-banner.error {
+      background: rgba(255, 77, 109, 0.16);
+      border: 1.5px solid var(--danger);
+      color: #ffccd5;
+    }
+
+    .feedback-banner.success {
+      background: rgba(6, 214, 160, 0.16);
+      border: 1.5px solid var(--success);
+      color: #bbf7d0;
+    }
+
+    /* Action Buttons Row */
+    .action-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      flex: 1;
+      min-width: 150px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-shoot {
+      background: linear-gradient(135deg, #06d6a0 0%, #00bbf9 100%);
+      color: #03071e;
+      box-shadow: 0 6px 20px rgba(6, 214, 160, 0.35);
+      flex: 2;
+    }
+
+    .btn-shoot:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(6, 214, 160, 0.5);
+    }
+
+    .btn-shoot:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-reset-words {
+      background: rgba(255, 255, 255, 0.09);
+      color: #e2e8f0;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-reset-words:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .btn-audio {
+      background: rgba(255, 209, 102, 0.14);
+      color: var(--stadium-gold);
+      border: 1.5px solid rgba(255, 209, 102, 0.4);
+    }
+
+    .btn-audio:hover {
+      background: rgba(255, 209, 102, 0.25);
+    }
+
+    .btn-next-q {
+      background: linear-gradient(135deg, #ffd166 0%, #fb8500 100%);
+      color: #03071e;
+      box-shadow: 0 6px 20px rgba(255, 209, 102, 0.4);
+      display: none;
+      flex: 2;
+    }
+
+    .btn-next-q.show {
+      display: inline-flex;
+    }
+
+    /* Post-Match Results & Review Screen */
+    .trophy-hero {
+      text-align: center;
+      padding: 28px 20px;
+      background: radial-gradient(circle at 50% 20%, rgba(255, 209, 102, 0.22), rgba(4, 15, 45, 0.9));
+      border: 2px solid var(--stadium-gold);
+      border-radius: 22px;
+      margin-bottom: 24px;
+    }
+
+    .trophy-icon {
+      font-size: 4.2rem;
+      margin-bottom: 8px;
+      display: inline-block;
+      filter: drop-shadow(0 0 20px rgba(255, 209, 102, 0.65));
+    }
+
+    .final-score-big {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      color: var(--stadium-gold);
+      margin: 8px 0;
+    }
+
+    .summary-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .metric-card {
+      background: rgba(3, 10, 32, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 14px;
+      border-radius: 14px;
+    }
+
+    .metric-card .m-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--stadium-cyan);
+    }
+
+    .metric-card .m-lbl {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-top: 4px;
+    }
+
+    /* Wrong Answers Review List */
+    .review-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--stadium-cyan);
+      color: #03071e;
+      border-color: var(--stadium-cyan);
+    }
+
+    .review-item {
+      background: rgba(4, 13, 38, 0.85);
+      border: 1.5px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .review-item.had-mistake {
+      border-left: 5px solid var(--danger);
+    }
+
+    .review-item.flawless {
+      border-left: 5px solid var(--success);
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .arabic-sentence-box {
+      dir: rtl;
+      direction: rtl;
+      font-family: 'Traditional Arabic', 'Amiri', 'Scheherazade New', 'Geeza Pro', 'Segoe UI', Tahoma, sans-serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    .wrong-ans-box {
+      background: rgba(255, 77, 109, 0.12);
+      border: 1px solid rgba(255, 77, 109, 0.45);
+      color: #fecdd3;
+      margin-bottom: 10px;
+    }
+
+    .correct-ans-box {
+      background: rgba(6, 214, 160, 0.12);
+      border: 1px solid rgba(6, 214, 160, 0.45);
+      color: #a7f3d0;
+    }
+
+    .box-tag {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Leaderboard Table */
+    .leaderboard-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .filter-select {
+      padding: 9px 14px;
+      border-radius: 10px;
+      background: rgba(3, 10, 32, 0.9);
+      border: 1px solid var(--stadium-cyan);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .leaderboard-table-wrap {
+      overflow-x: auto;
+    }
+
+    table.stadium-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    table.stadium-table th {
+      background: rgba(0, 187, 249, 0.15);
+      color: var(--stadium-cyan);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 13px 14px;
+      border-bottom: 2px solid rgba(0, 245, 212, 0.3);
+    }
+
+    table.stadium-table td {
+      padding: 13px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.93rem;
+      vertical-align: middle;
+    }
+
+    table.stadium-table tr.current-user-row {
+      background: rgba(255, 209, 102, 0.16);
+      font-weight: 800;
+    }
+
+    .rank-medal {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-weight: 900;
+      font-size: 0.88rem;
+    }
+
+    .rank-1 { background: linear-gradient(135deg, #ffd700, #f59e0b); color: #03071e; }
+    .rank-2 { background: linear-gradient(135deg, #e2e8f0, #94a3b8); color: #03071e; }
+    .rank-3 { background: linear-gradient(135deg, #f97316, #b45309); color: #fff; }
+    .rank-other { background: rgba(255,255,255,0.1); color: #cbd5e1; }
+
+    /* Teacher Portal Specific Styles */
+    .teacher-login-box {
+      max-width: 480px;
+      margin: 24px auto;
+    }
+
+    .teacher-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: linear-gradient(135deg, rgba(255, 209, 102, 0.16), rgba(0, 187, 249, 0.14));
+      border: 1.5px solid var(--stadium-gold);
+      border-radius: 18px;
+      padding: 18px 22px;
+      margin-bottom: 20px;
+    }
+
+    .teacher-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .teacher-stat-card {
+      background: rgba(4, 14, 42, 0.9);
+      border: 1.5px solid rgba(0, 245, 212, 0.28);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .teacher-stat-card .ts-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+
+    .teacher-stat-card .ts-val {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: var(--stadium-gold);
+    }
+
+    .teacher-stat-card .ts-sub {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      margin-top: 4px;
+    }
+
+    /* Question Error Analysis Bars */
+    .q-analysis-row {
+      display: grid;
+      grid-template-columns: 95px 1fr 130px;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: rgba(3, 10, 32, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .q-analysis-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.84);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #071334;
+      border: 2px solid var(--stadium-cyan);
+      border-radius: 20px;
+      max-width: 820px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.75);
+    }
+  
+    /* Auto-Cloud Badge, Audio Indicator & Toast Notifications */
+    .cloud-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 13px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      border: 1.5px solid rgba(6, 214, 160, 0.55);
+      background: rgba(6, 214, 160, 0.15);
+      color: #a7f3d0;
+    }
+
+    .speaking-indicator {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: rgba(255, 209, 102, 0.18);
+      border: 1.5px solid var(--stadium-gold);
+      color: var(--stadium-gold);
+      font-size: 0.92rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .speaking-indicator.active {
+      display: flex;
+    }
+
+    .word-audio-mini {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.8rem;
+      opacity: 0.85;
+      margin-left: 4px;
+    }
+
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 250;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 380px;
+      pointer-events: none;
+    }
+
+    .toast-msg {
+      background: rgba(4, 15, 45, 0.96);
+      border: 1.5px solid var(--stadium-cyan);
+      color: #ffffff;
+      padding: 13px 18px;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+      pointer-events: auto;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .toast-msg.error {
+      border-color: var(--danger);
+      color: #fecdd3;
+    }
+
+    .toast-msg.gold {
+      border-color: var(--stadium-gold);
+      color: var(--stadium-gold);
+    }
+
+  
+    /* Roblox Blocky Studs & Obby Parkour Theme Overrides */
+    body {
+      background: radial-gradient(circle at 50% 0%, #1e293b 0%, #111216 55%, #090a0c 100%);
+    }
+
+    .bg-stars {
+      opacity: 0.16;
+      background-image:
+        radial-gradient(circle, #00a2ff 2px, transparent 2.5px),
+        radial-gradient(circle, #02b757 2px, transparent 2.5px);
+      background-size: 36px 36px;
+      background-position: 0 0, 18px 18px;
+    }
+
+    .stadium-header {
+      background: linear-gradient(135deg, #191b1d 0%, #232527 50%, #141619 100%);
+      border: 2px solid #00a2ff;
+      border-bottom: 5px solid #0077be;
+      border-radius: 16px;
+    }
+
+    .stadium-card {
+      background: rgba(25, 27, 29, 0.96);
+      border: 2px solid rgba(255, 255, 255, 0.14);
+      border-bottom: 5px solid rgba(0, 0, 0, 0.65);
+      border-radius: 16px;
+    }
+
+    .arabic-word-card {
+      border-radius: 10px;
+      background: linear-gradient(180deg, #2b3346 0%, #1c2230 100%);
+      border: 2px solid #00a2ff;
+      border-bottom: 5px solid #0066a2;
+    }
+
+    .arabic-word-card.in-slot {
+      background: linear-gradient(180deg, #02b757 0%, #018840 100%);
+      border-color: #6ee7b7;
+      border-bottom: 5px solid #015c2b;
+      color: #ffffff;
+    }
+
+    .btn-primary, .btn-shoot {
+      background: linear-gradient(180deg, #02d163 0%, #02b757 100%);
+      color: #ffffff;
+      border-bottom: 4px solid #017a39;
+      border-radius: 10px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+
+    /* Roblox Obby Lava & Platform Track */
+    .stadium-pitch {
+      background: linear-gradient(180deg, #141824 0%, #1e2436 68%, #ff3b5c 92%, #ff7b00 100%);
+      border: 3px solid #393b3d;
+      border-bottom: 5px solid #ff3b5c;
+      border-radius: 14px;
+      height: 122px;
+    }
+
+    .obby-platforms-row {
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      bottom: 22px;
+      height: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .obby-pad {
+      width: 7.5%;
+      height: 14px;
+      background: linear-gradient(180deg, #00a2ff, #0066a2);
+      border: 1.5px solid #ffffff;
+      border-radius: 4px;
+      box-shadow: 0 4px 0 #003e63, 0 0 10px rgba(0, 162, 255, 0.5);
+    }
+
+    .obby-pad.done {
+      background: linear-gradient(180deg, #02b757, #017a39);
+      box-shadow: 0 4px 0 #014d24, 0 0 12px rgba(2, 183, 87, 0.7);
+    }
+
+    .obby-pad.finish-pad {
+      background: linear-gradient(180deg, #ffd166, #f59e0b);
+      box-shadow: 0 4px 0 #b45309, 0 0 14px rgba(255, 209, 102, 0.85);
+    }
+
+    /* Speed Bonus Meter Bar */
+    .speed-meter-wrap {
+      background: rgba(15, 17, 21, 0.9);
+      border: 1.5px solid rgba(0, 162, 255, 0.35);
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+    }
+
+    .speed-meter-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .speed-bar-track {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .speed-bar-fill {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #02b757, #00a2ff, #ffd166);
+      border-radius: 999px;
+      transition: width 0.3s linear, background 0.3s ease;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="bg-stars"></div>
+
+  <div class="app-container">
+    <!-- HEADER -->
+    <header class="stadium-header">
+      <div class="brand-left">
+        <!-- SVG Roblox Tilt Cube Style Logo -->
+        <svg class="starball-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="animation:none;">
+          <g transform="rotate(14 50 50)">
+            <rect x="16" y="16" width="68" height="68" rx="10" fill="url(#rbxGrad)" stroke="#ffffff" stroke-width="4"/>
+            <rect x="39" y="39" width="22" height="22" rx="3" fill="#111216" stroke="#ffffff" stroke-width="3"/>
+          </g>
+          <defs>
+            <linearGradient id="rbxGrad" x1="0" y1="0" x2="100" y2="100">
+              <stop offset="0%" stop-color="#02b757"/>
+              <stop offset="55%" stop-color="#00a2ff"/>
+              <stop offset="100%" stop-color="#ffb703"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="brand-titles">
+          <div class="league-tag">🎮 DUNIA ROBLOX OBBY • TAHUN 4</div>
+          <h1>ROBLOX OBBY BAHASA ARAB</h1>
+          <p>Cabaran Pantas Susun Ayat Bahasa Arab Tahun 4 (4 Proaktif &amp; 4 Progresif)</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <button class="btn-icon" id="btnHomeNav" onclick="goHomeScreen()">
+          🏠 Laman Utama
+        </button>
+        <button class="btn-icon" id="btnSoundToggle" onclick="toggleSound()">
+          🔊 Bunyi: ON
+        </button>
+        <span class="cloud-status-badge" id="cloudLiveBadge" title="Data disimpan secara automatik ke Cloud Storage">
+          🟢 Auto-Cloud: Aktif
+        </span>
+        <button class="btn-icon" onclick="openLeaderboardModal()">
+          🏆 Papan Pendahulu
+        </button>
+        <button class="btn-icon btn-teacher-portal" onclick="openTeacherPortalScreen()">
+          🔐 Semakan Guru
+        </button>
+      </div>
+    </header>
+
+    <!-- SCREEN 1: STUDENT LOGIN & REGISTRATION -->
+    <section id="screenLogin" class="screen active">
+      <div class="login-grid">
+        <div class="stadium-card">
+          <h2 class="section-title">🧱 Pendaftaran Pemain Roblox Obby</h2>
+          <p class="section-subtitle">
+            Sila masukkan <strong>Nama Sebenar</strong> dan pilih <strong>Kelas Tahun 4</strong> anda sebelum memulakan cabaran parkour ayat Bahasa Arab!
+          </p>
+
+          <form id="loginForm" onsubmit="startGame(event)">
+            <div class="form-group">
+              <label class="form-label" for="inputPlayerName">Nama Sebenar Murid *</label>
+              <input
+                type="text"
+                id="inputPlayerName"
+                class="form-input"
+                placeholder="Contoh: Muhammad Adam bin Ahmad"
+                required
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Pilih Kelas Tahun 4 *</label>
+              <input type="hidden" id="inputPlayerClass" value="4 Proaktif" />
+              <div class="class-selector-grid">
+                <div class="class-option-card selected" id="classCardProaktif" onclick="selectStudentClass('4 Proaktif')">
+                  <div class="class-radio-dot"></div>
+                  <div>
+                    <div class="class-option-title">4 Proaktif</div>
+                    <div class="class-option-sub">Skuad Roblox Arab Tahun 4</div>
+                  </div>
+                </div>
+                <div class="class-option-card" id="classCardProgresif" onclick="selectStudentClass('4 Progresif')">
+                  <div class="class-radio-dot"></div>
+                  <div>
+                    <div class="class-option-title">4 Progresif</div>
+                    <div class="class-option-sub">Skuad Roblox Arab Tahun 4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Pilih Avatar / Dunia Roblox Anda</label>
+              <div class="jersey-grid" id="jerseyGrid">
+                <div class="jersey-option selected" data-club="Blox Builder" data-color="#02b757" onclick="selectJersey(this)">
+                  <div class="jersey-badge" style="background: linear-gradient(135deg,#02b757,#ffb703); color:#111216; border-radius:8px;">🧱</div>
+                  <div class="jersey-name">Blox Builder</div>
+                </div>
+                <div class="jersey-option" data-club="Obby Master" data-color="#00a2ff" onclick="selectJersey(this)">
+                  <div class="jersey-badge" style="background: linear-gradient(135deg,#00a2ff,#0055ff); color:#fff; border-radius:8px;">🏃</div>
+                  <div class="jersey-name">Obby Master</div>
+                </div>
+                <div class="jersey-option" data-club="Brookhaven Star" data-color="#ffd166" onclick="selectJersey(this)">
+                  <div class="jersey-badge" style="background: linear-gradient(135deg,#ffd166,#fb8500); color:#111216; border-radius:8px;">🌟</div>
+                  <div class="jersey-name">Brookhaven Star</div>
+                </div>
+                <div class="jersey-option" data-club="Blox Fruits Hero" data-color="#ff3b5c" onclick="selectJersey(this)">
+                  <div class="jersey-badge" style="background: linear-gradient(135deg,#ff3b5c,#7209b7); color:#fff; border-radius:8px;">⚔️</div>
+                  <div class="jersey-name">Blox Fruits Hero</div>
+                </div>
+                <div class="jersey-option" data-club="Adopt Me Keeper" data-color="#fb8500" onclick="selectJersey(this)">
+                  <div class="jersey-badge" style="background: linear-gradient(135deg,#ff9f1c,#ffbf69); color:#111216; border-radius:8px;">🐾</div>
+                  <div class="jersey-name">Adopt Me Keeper</div>
+                </div>
+                <div class="jersey-option" data-club="Tower of Hell Pro" data-color="#00bbf9" onclick="selectJersey(this)">
+                  <div class="jersey-badge" style="background: linear-gradient(135deg,#7209b7,#00bbf9); color:#fff; border-radius:8px;">🗼</div>
+                  <div class="jersey-name">Tower of Hell Pro</div>
+                </div>
+                <div class="jersey-option" data-club="Ninja Legends" data-color="#ff595e" onclick="selectJersey(this)">
+                  <div class="jersey-badge" style="background: linear-gradient(135deg,#e63946,#1d3557); color:#ffd166; border-radius:8px;">🥷</div>
+                  <div class="jersey-name">Ninja Legends</div>
+                </div>
+                <div class="jersey-option" data-club="Speed Run King" data-color="#38bdf8" onclick="selectJersey(this)">
+                  <div class="jersey-badge" style="background: linear-gradient(135deg,#00f5d4,#00a2ff); color:#111216; border-radius:8px;">⚡</div>
+                  <div class="jersey-name">Speed Run King</div>
+                </div>
+                <div class="jersey-option" data-club="Robux Tycoon" data-color="#a7f3d0" onclick="selectJersey(this)">
+                  <div class="jersey-badge" style="background: linear-gradient(135deg,#02b757,#111216); color:#ffd166; border-radius:8px;">💎</div>
+                  <div class="jersey-name">Robux Tycoon</div>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              🎮 Mula Cabaran Roblox Obby (10 Soalan)
+            </button>
+          </form>
+        </div>
+
+        <!-- RULES & PREVIEW LEADERBOARD -->
+        <div>
+          <div class="stadium-card">
+            <h3 class="section-title">⚡ Sistem Markah: Ketepatan + Kepantasan Masa!</h3>
+            <p class="section-subtitle">
+              Susun perkataan Bahasa Arab dari <strong>kanan ke kiri</strong> dengan betul dan <strong>pantas</strong>! Markah setiap soalan (sehingga <strong>100 Markah</strong>) dikira daripada <strong>Markah Ketepatan (50m)</strong> + <strong>Bonus Kepantasan Masa (50m)</strong>:
+            </p>
+            <ul class="rules-list">
+              <li>
+                <span>⚡ <strong>Pantas Kilat (≤ 5 saat) + Tepat 1x</strong></span>
+                <span class="pts-badge pts-5">100 Markah</span>
+              </li>
+              <li>
+                <span>🚀 <strong>Cepat (6 – 15 saat) + Tepat 1x</strong></span>
+                <span class="pts-badge pts-4">90 – 99 Markah</span>
+              </li>
+              <li>
+                <span>🧱 <strong>Sederhana (16 – 30 saat) + Tepat 1x</strong></span>
+                <span class="pts-badge pts-3">75 – 89 Markah</span>
+              </li>
+              <li>
+                <span>🛡️ <strong>Percubaan Ke-2 / Ke-3 Betul</strong></span>
+                <span class="pts-badge pts-2">Asas 40m / 30m + Bonus Masa</span>
+              </li>
+              <li>
+                <span>💪 <strong>Percubaan Ke-4 &amp; Seterusnya</strong></span>
+                <span class="pts-badge pts-1">Asas 20m / 10m + Bonus Masa</span>
+              </li>
+            </ul>
+            <div style="margin-top: 16px; padding: 12px; border-radius: 12px; background: rgba(0, 162, 255, 0.1); border: 1px dashed rgba(0, 162, 255, 0.45); font-size: 0.84rem; color: #cbd5e1; line-height: 1.5;">
+              💡 <strong>Semakan Checkpoint Roblox &amp; Auto-Cloud:</strong> Markah maksimum keseluruhan ialah <strong>1,000 Markah (R$)</strong>. Setiap jawapan salah akan direkodkan untuk ulang kaji murid dan disimpan secara automatik ke Cloud Guru!
+            </div>
+          </div>
+
+          <div class="stadium-card" style="padding: 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <h3 style="font-size:1.05rem; font-weight:800; color:var(--stadium-gold);">🏆 3 Pendahulu Teratas Semasa</h3>
+              <button class="btn-icon" style="padding:4px 10px; font-size:0.76rem;" onclick="openLeaderboardModal()">Lihat Semua</button>
+            </div>
+            <div id="miniLeaderboardPreview"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: GAMEPLAY ARENA -->
+    <section id="screenGame" class="screen">
+      <!-- Roblox Obby HUD -->
+      <div class="broadcast-hud">
+        <div class="hud-player">
+          <div id="hudClubBadge" class="jersey-badge" style="margin:0; width:44px; height:44px; background:#02b757; color:#111216; border-radius:10px;">🧱</div>
+          <div class="hud-player-info">
+            <div class="p-name" id="hudPlayerName">Nama Pemain</div>
+            <div class="p-class" id="hudPlayerClass">4 Proaktif</div>
+          </div>
+        </div>
+
+        <div class="hud-center">
+          <div class="match-progress-label">ROBLOX OBBY STAGE • CHECKPOINT <span id="hudQIndex">1</span> / 10</div>
+          <div class="match-dots" id="hudMatchDots"></div>
+        </div>
+
+        <div class="hud-stats">
+          <div class="stat-box gold">
+            <div class="s-label">Markah (R$)</div>
+            <div class="s-val" id="hudScore">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="s-label">Masa Keseluruhan</div>
+            <div class="s-val" id="hudTimer">00:00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Roblox Obby Parkour Stage -->
+      <div class="stadium-pitch">
+        <div class="obby-platforms-row" id="obbyPlatformsRow">
+          <div class="obby-pad"></div>
+          <div class="obby-pad"></div>
+          <div class="obby-pad"></div>
+          <div class="obby-pad"></div>
+          <div class="obby-pad"></div>
+          <div class="obby-pad"></div>
+          <div class="obby-pad"></div>
+          <div class="obby-pad"></div>
+          <div class="obby-pad"></div>
+          <div class="obby-pad finish-pad"></div>
+        </div>
+
+        <div class="ball-runner" id="pitchBallRunner" style="top:44%;">
+          <div class="ball-icon">🤖</div>
+          <div class="ball-tag" id="pitchBallTag">Stage 1</div>
+        </div>
+
+        <div class="pitch-banner-overlay" id="pitchBannerOverlay">
+          <div class="goal-text" id="pitchBannerText">STAGE CLEAR!! +100 MARKAH! 🏆</div>
+        </div>
+      </div>
+
+      <!-- Main Question Card -->
+      <div class="stadium-card">
+        <div class="question-meta-bar">
+          <div class="q-badge" id="qNumberBadge">🧱 Stage ١ daripada ١٠</div>
+          <div class="attempt-status">
+            <span style="font-size:0.86rem; color:#cbd5e1;" id="attemptCounterText">Percubaan: Ke-1 (Asas 50m)</span>
+            <span class="potential-points" id="potentialPointsBadge">Ganjaran Semasa: +100 Markah</span>
+          </div>
+        </div>
+
+        <!-- Live Speed Bonus Meter -->
+        <div class="speed-meter-wrap">
+          <div class="speed-meter-top">
+            <span style="color:var(--stadium-electric);">⏱️ Masa Soalan Ini: <strong id="qTimerSecondsText" style="color:#fff;">0 saat</strong></span>
+            <span style="color:var(--stadium-gold);" id="speedBonusLiveText">⚡ Bonus Kepantasan: +50 Markah (Maksimum!)</span>
+          </div>
+          <div class="speed-bar-track">
+            <div class="speed-bar-fill" id="speedBarFill"></div>
+          </div>
+        </div>
+
+        <div class="instruction-box">
+          <div class="instruction-text">
+            👉 Klik perkataan Bahasa Arab di bawah mengikut urutan yang betul (<strong>Kanan ke Kiri</strong>). Klik semula perkataan di dalam kotak jawapan jika mahu membatalkannya.
+          </div>
+          <div class="meaning-hint" id="meaningHintBox">
+            Terjemahan: ...
+          </div>
+        </div>
+
+        <!-- Target Sentence Area (RTL) -->
+        <div class="zone-label">
+          <span>🧱 Platform Susunan Ayat Roblox Anda</span>
+          <span class="rtl-direction-indicator">⬅️ Urutan Bacaan Bahasa Arab (Kanan ke Kiri)</span>
+        </div>
+        <div class="sentence-slot-area" id="sentenceSlotArea">
+          <div class="empty-slot-placeholder">Klik perkataan di bawah untuk menyusun ayat di sini...</div>
+        </div>
+
+        <!-- Feedback Banner -->
+        <div class="feedback-banner" id="feedbackBanner">
+          <span id="feedbackText"></span>
+          <span id="feedbackSubText" style="font-size:0.84rem; opacity:0.9;"></span>
+        </div>
+
+        <!-- Live Arabic Audio Speaking Indicator -->
+        <div class="speaking-indicator" id="speakingIndicator">
+          <span>🔊 Bacaan Bahasa Arab: <strong id="speakingIndicatorText" style="color:#fff; margin-left:6px; font-family:'Traditional Arabic','Amiri',serif; font-size:1.3rem;"></strong></span>
+          <button type="button" class="btn-icon" style="padding:4px 10px; font-size:0.76rem;" onclick="speakCurrentTargetSentence()">
+            🔁 Ulang Bacaan
+          </button>
+        </div>
+
+        <!-- Scrambled Word Bank (RTL) -->
+        <div class="zone-label">
+          <span>👟 Hantaran Perkataan (Susun Semula Perkataan Ini)</span>
+          <button class="btn-icon btn-audio" style="padding:6px 14px; font-size:0.84rem;" onclick="speakCurrentTargetSentence()">
+            🔊 Dengar Sebutan Arab
+          </button>
+        </div>
+        <div class="word-bank-area" id="wordBankArea"></div>
+
+        <!-- Action Buttons -->
+        <div class="action-row">
+          <button type="button" class="btn-action btn-reset-words" id="btnResetWords" onclick="resetCurrentQuestionWords()">
+            🔄 Susun Semula
+          </button>
+          <button type="button" class="btn-action btn-shoot" id="btnCheckAnswer" onclick="submitAnswer()">
+            🚀 Lompat Obby! (Semak Jawapan)
+          </button>
+          <button type="button" class="btn-action btn-next-q" id="btnNextQuestion" onclick="goToNextQuestion()">
+            ➡️ Stage Seterusnya
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: END OF GAME SUMMARY, WRONG ANSWER REVIEW & LEADERBOARD -->
+    <section id="screenResult" class="screen">
+      <div class="trophy-hero">
+        <div class="trophy-icon">🏆</div>
+        <div style="font-size:0.85rem; font-weight:800; letter-spacing:1.5px; color:var(--stadium-cyan); text-transform:uppercase;">
+          wisel penamat • keputusan rasmi perlawanan akhir
+        </div>
+        <h2 style="font-size:1.8rem; margin-top:4px;" id="resPlayerTitle">Tahniah, Pemain!</h2>
+        <div class="final-score-big" id="resTotalScore">1000 / 1000 Markah</div>
+        <p style="color:#e2e8f0; font-size:0.96rem;" id="resRankComment">Prestasi Juara Liga Bola Sepak!</p>
+
+        <div class="summary-metrics">
+          <div class="metric-card">
+            <div class="m-val" id="resFirstTryCount">10 / 10</div>
+            <div class="m-lbl">Tepat Percubaan Pertama</div>
+          </div>
+          <div class="metric-card">
+            <div class="m-val" id="resMistakeQCount">0</div>
+            <div class="m-lbl">Soalan Ada Percubaan Salah</div>
+          </div>
+          <div class="metric-card">
+            <div class="m-val" id="resTimeTaken">01:20</div>
+            <div class="m-lbl">Masa Perlawanan</div>
+          </div>
+          <div class="metric-card">
+            <div class="m-val" id="resLeaderboardPos">#1</div>
+            <div class="m-lbl">Kedudukan Keseluruhan</div>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:22px;">
+          <button class="btn-action btn-shoot" style="max-width:280px;" onclick="playAgainSamePlayer()">
+            🔁 Main Semula (Baiki Rekod)
+          </button>
+          <button class="btn-action btn-audio" style="max-width:300px;" onclick="switchNewPlayer()">
+            👥 Giliran Rakan Lain (Tukar Pemain)
+          </button>
+        </div>
+      </div>
+
+      <!-- VAR REVIEW: WRONG ANSWERS & CORRECT ANSWERS -->
+      <div class="stadium-card">
+        <h3 class="section-title">📺 Analisis Video Pengadil (VAR): Semakan Jawapan &amp; Pembetulan</h3>
+        <p class="section-subtitle">
+          Semak semula setiap soalan yang mempunyai percubaan kurang tepat beserta <strong>Jawapan Sebenar yang Betul</strong> mengikut Skema Jawapan Tahun 4:
+        </p>
+
+        <div class="review-tabs">
+          <button class="tab-btn active" id="tabMistakesOnly" onclick="switchReviewTab('mistakes')">
+            ⚠️ Jawapan Salah &amp; Pembetulan (<span id="mistakeBadgeCount">0</span>)
+          </button>
+          <button class="tab-btn" id="tabAllQuestions" onclick="switchReviewTab('all')">
+            📋 Semua 10 Skema Jawapan Lengkap
+          </button>
+        </div>
+
+        <div id="reviewListContainer"></div>
+      </div>
+
+      <!-- CLASSROOM LEADERBOARD -->
+      <div class="stadium-card">
+        <div class="leaderboard-controls">
+          <div>
+            <h3 class="section-title">🏆 Papan Pendahulu (4 Proaktif &amp; 4 Progresif)</h3>
+            <p style="font-size:0.86rem; color:#94a3b8;">Kedudukan dikemas kini secara langsung berdasarkan jumlah markah tertinggi dan masa terpantas.</p>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <select id="leaderboardClassFilter" class="filter-select" onchange="renderLeaderboardTables()">
+              <option value="ALL">Semua Kelas (4 Proaktif &amp; 4 Progresif)</option>
+              <option value="4 Proaktif">Kelas: 4 Proaktif</option>
+              <option value="4 Progresif">Kelas: 4 Progresif</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="leaderboard-table-wrap">
+          <table class="stadium-table">
+            <thead>
+              <tr>
+                <th>Kedudukan</th>
+                <th>Nama Murid</th>
+                <th>Kelas</th>
+                <th>Pasukan</th>
+                <th>Tepat 1x</th>
+                <th>Masa</th>
+                <th>Markah</th>
+              </tr>
+            </thead>
+            <tbody id="resultLeaderboardBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: TEACHER LOGIN SCREEN -->
+    <section id="screenTeacherLogin" class="screen">
+      <div class="stadium-card teacher-login-box">
+        <div style="text-align:center; margin-bottom:18px;">
+          <div style="font-size:3rem; margin-bottom:6px;">🔐</div>
+          <h2 class="section-title" style="justify-content:center;">Log Masuk Semakan Guru</h2>
+          <p class="section-subtitle" style="margin-bottom:0;">
+            Portal khas untuk guru menyemak markah, rekod kesilapan ayat Bahasa Arab murid, dan analisis kelas <strong>4 Proaktif</strong> serta <strong>4 Progresif</strong>.
+          </p>
+        </div>
+
+        <form onsubmit="handleTeacherLogin(event)">
+          <div class="form-group">
+            <label class="form-label" for="teacherUsername">Nama Pengguna (Username)</label>
+            <input
+              type="text"
+              id="teacherUsername"
+              class="form-input"
+              placeholder="Masukkan username guru"
+              required
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="teacherPassword">Kata Laluan (Password)</label>
+            <input
+              type="password"
+              id="teacherPassword"
+              class="form-input"
+              placeholder="Masukkan kata laluan"
+              required
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="feedback-banner error" id="teacherLoginError" style="margin-bottom:16px;">
+            <span>❌ Nama pengguna atau kata laluan tidak sah! Sila cuba lagi.</span>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            🔓 Masuk ke Portal Semakan Guru
+          </button>
+
+          <button type="button" class="btn-icon" style="width:100%; justify-content:center; margin-top:12px; padding:12px;" onclick="goHomeScreen()">
+            ⬅️ Kembali ke Laman Murid
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SCREEN 5: TEACHER REVIEW & ANALYTICS DASHBOARD -->
+    <section id="screenTeacherDashboard" class="screen">
+      <div class="teacher-header-bar">
+        <div>
+          <div style="font-size:0.78rem; font-weight:800; color:var(--stadium-gold); text-transform:uppercase; letter-spacing:1.2px;">
+            PORTAL PENTADBIR &amp; SEMAKAN GURU BAHASA ARAB TAHUN 4
+          </div>
+          <h2 style="font-size:1.5rem; font-weight:900; margin-top:2px;">
+            📊 Papan Pemuka Semakan Guru (4 Proaktif &amp; 4 Progresif)
+          </h2>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn-icon" onclick="exportLeaderboardCSV()">
+            📥 Muat Turun Laporan CSV
+          </button>
+          <button class="btn-icon" onclick="window.print()">
+            🖨️ Cetak Laporan
+          </button>
+          <button class="btn-icon" style="border-color:var(--danger); color:#fecdd3;" onclick="logoutTeacher()">
+            🚪 Log Keluar Guru
+          </button>
+        </div>
+      </div>
+
+      <!-- Teacher Summary Metrics -->
+      <div class="teacher-stats-grid">
+        <div class="teacher-stat-card">
+          <div class="ts-label">Jumlah Penyertaan Murid</div>
+          <div class="ts-val" id="tStatTotalStudents">0 Murid</div>
+          <div class="ts-sub" id="tStatClassBreakdown">4 Proaktif: 0 | 4 Progresif: 0</div>
+        </div>
+        <div class="teacher-stat-card">
+          <div class="ts-label">Purata Markah Keseluruhan</div>
+          <div class="ts-val" id="tStatAvgScore">0 / 1000</div>
+          <div class="ts-sub" id="tStatAvgPercent">Belum ada data</div>
+        </div>
+        <div class="teacher-stat-card">
+          <div class="ts-label">Markah Tertinggi</div>
+          <div class="ts-val" id="tStatTopScore">0 / 1000</div>
+          <div class="ts-sub" id="tStatTopStudent">-</div>
+        </div>
+        <div class="teacher-stat-card">
+          <div class="ts-label">Soalan Paling Mencabar</div>
+          <div class="ts-val" id="tStatHardestQ">-</div>
+          <div class="ts-sub" id="tStatHardestQSub">Tiada rekod kesilapan</div>
+        </div>
+      </div>
+
+      <!-- Individual Student Performance & Answer Inspection Table -->
+      <div class="stadium-card">
+        <div class="leaderboard-controls">
+          <div>
+            <h3 class="section-title">👩‍🏫 Senarai Semakan Markah &amp; Jawapan Murid</h3>
+            <p style="font-size:0.86rem; color:#94a3b8;">
+              Klik butang <strong>"🔍 Semak Jawapan"</strong> pada mana-mana murid untuk melihat senarai jawapan salah yang telah mereka cuba beserta pembetulannya.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <input
+              type="text"
+              id="teacherSearchInput"
+              class="filter-select"
+              placeholder="🔎 Cari nama murid..."
+              oninput="renderTeacherDashboard()"
+              style="min-width:190px;"
+            />
+            <select id="teacherClassFilter" class="filter-select" onchange="renderTeacherDashboard()">
+              <option value="ALL">Semua Kelas (4 Proaktif &amp; 4 Progresif)</option>
+              <option value="4 Proaktif">4 Proaktif Sahaja</option>
+              <option value="4 Progresif">4 Progresif Sahaja</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="leaderboard-table-wrap">
+          <table class="stadium-table">
+            <thead>
+              <tr>
+                <th>Ked.</th>
+                <th>Nama Sebenar Murid</th>
+                <th>Kelas</th>
+                <th>Pasukan</th>
+                <th>Markah</th>
+                <th>Tepat 1x</th>
+                <th>Soalan Salah</th>
+                <th>Masa</th>
+                <th>Tindakan Guru</th>
+              </tr>
+            </thead>
+            <tbody id="teacherStudentTableBody"></tbody>
+          </table>
+        </div>
+
+        <div style="margin-top:18px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1); display:flex; justify-content:flex-end; align-items:center; flex-wrap:wrap; gap:10px;">
+          <button class="btn-icon" style="color:#fecdd3; border-color:rgba(255,77,109,0.4);" onclick="clearAllRecordsConfirm()">
+            🗑️ Kosongkan Semua Rekod Markah
+          </button>
+        </div>
+      </div>
+
+      <!-- Per-Question Error Rate Breakdown for Teacher -->
+      <div class="stadium-card">
+        <h3 class="section-title">📈 Analisis Penguasaan Mengikut Soalan (Soalan 1 – 10)</h3>
+        <p class="section-subtitle">
+          Membantu guru mengenal pasti ayat Bahasa Arab yang paling kerap mengelirukan murid kelas <strong>4 Proaktif</strong> dan <strong>4 Progresif</strong>:
+        </p>
+        <div id="teacherQuestionAnalysisContainer"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODAL 1: PUBLIC LEADERBOARD -->
+  <div class="modal-backdrop" id="leaderboardModal">
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+        <h3 class="section-title" style="margin:0;">🏆 Papan Pendahulu (4 Proaktif &amp; 4 Progresif)</h3>
+        <button class="btn-icon" onclick="closeLeaderboardModal()">✖ Tutup</button>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+        <p style="font-size:0.88rem; color:#94a3b8; margin:0;">
+          Kedudukan semasa murid Tahun 4 berdasarkan markah tertinggi dan kepantasan masa.
+        </p>
+        <select id="modalClassFilter" class="filter-select" onchange="renderLeaderboardTables()">
+          <option value="ALL">Semua Kelas</option>
+          <option value="4 Proaktif">4 Proaktif</option>
+          <option value="4 Progresif">4 Progresif</option>
+        </select>
+      </div>
+      <div class="leaderboard-table-wrap">
+        <table class="stadium-table">
+          <thead>
+            <tr>
+              <th>Ked.</th>
+              <th>Nama Murid</th>
+              <th>Kelas</th>
+              <th>Pasukan</th>
+              <th>Masa</th>
+              <th>Markah</th>
+            </tr>
+          </thead>
+          <tbody id="modalLeaderboardBody"></tbody>
+        </table>
+      </div>
+      <div style="margin-top:18px; display:flex; justify-content:flex-end;">
+        <button class="btn-icon" onclick="closeLeaderboardModal()">Kembali</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: TEACHER STUDENT DETAIL INSPECTION -->
+  <div class="modal-backdrop" id="studentDetailModal">
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 class="section-title" style="margin:0;" id="detailModalStudentName">📋 Rekod Jawapan Murid</h3>
+        <button class="btn-icon" onclick="closeStudentDetailModal()">✖ Tutup</button>
+      </div>
+      <div id="detailModalMeta" style="margin-bottom:16px; font-size:0.9rem; color:#cbd5e1;"></div>
+      <div id="detailModalContent"></div>
+    </div>
+  </div>
+
+  <!-- MODAL PENGESAHAN PADAM SEMUA REKOD -->
+  <div class="modal-backdrop" id="confirmClearModal">
+    <div class="modal-box" style="max-width:460px; text-align:center;">
+      <div style="font-size:2.8rem; margin-bottom:8px;">⚠️</div>
+      <h3 class="section-title" style="justify-content:center;">Padam Semua Rekod Markah?</h3>
+      <p style="color:#cbd5e1; font-size:0.92rem; margin:10px 0 20px; line-height:1.5;">
+        Adakah anda pasti mahu memadamkan kesemua rekod markah murid daripada papan pendahulu dan Cloud Storage? Tindakan ini tidak boleh diundur.
+      </p>
+      <div style="display:flex; gap:10px; justify-content:center;">
+        <button type="button" class="btn-icon" onclick="closeConfirmClearModal()">Batal</button>
+        <button type="button" class="btn-icon" style="background:var(--danger); color:#fff; border-color:var(--danger);" onclick="executeClearAllRecords()">
+          🗑️ Ya, Padam Semua
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script>
+    // =========================================================================
+    // 1. DATA SOALAN & SKEMA JAWAPAN RASMI (Latihan PDPR Tahun 4.pdf)
+    // =========================================================================
+    const QUESTIONS_DATA = [
+      {
+        id: 1,
+        arabicNum: "١",
+        pdfScrambled: ["دُكَّانِ", "جِئْتُ", "المَدْرَسَةِ.", "مِنْ"],
+        correctWords: ["جِئْتُ", "مِنْ", "دُكَّانِ", "المَدْرَسَةِ."],
+        correctSentence: "جِئْتُ مِنْ دُكَّانِ المَدْرَسَةِ.",
+        malayMeaning: "Saya datang dari kedai sekolah."
+      },
+      {
+        id: 2,
+        arabicNum: "٢",
+        pdfScrambled: ["المَكْتَبَةِ", "هِيَ", "المُجْتَهِدَةُ.", "أَمِينَةُ"],
+        correctWords: ["هِيَ", "أَمِينَةُ", "المَكْتَبَةِ", "المُجْتَهِدَةُ."],
+        correctSentence: "هِيَ أَمِينَةُ المَكْتَبَةِ المُجْتَهِدَةُ.",
+        malayMeaning: "Dia ialah pengawas perpustakaan yang rajin."
+      },
+      {
+        id: 3,
+        arabicNum: "٣",
+        pdfScrambled: ["أُقَابِلَ", "أُرِيدُ", "المُدِيرَ.", "أَنْ"],
+        correctWords: ["أُرِيدُ", "أَنْ", "أُقَابِلَ", "المُدِيرَ."],
+        correctSentence: "أُرِيدُ أَنْ أُقَابِلَ المُدِيرَ.",
+        malayMeaning: "Saya mahu berjumpa dengan Guru Besar."
+      },
+      {
+        id: 4,
+        arabicNum: "٤",
+        pdfScrambled: ["وَأَنْتُمْ", "كُلُّ", "بِخَيْرٍ.", "عَامٍ"],
+        correctWords: ["كُلُّ", "عَامٍ", "وَأَنْتُمْ", "بِخَيْرٍ."],
+        correctSentence: "كُلُّ عَامٍ وَأَنْتُمْ بِخَيْرٍ.",
+        malayMeaning: "Selamat menyambut hari perayaan (Semoga sentiasa dalam kebaikan)."
+      },
+      {
+        id: 5,
+        arabicNum: "٥",
+        pdfScrambled: ["فِي", "اليَوْمُ", "إِبْرِيل.", "الرِّيَاضِيُّ", "شَهْرِ"],
+        correctWords: ["اليَوْمُ", "الرِّيَاضِيُّ", "فِي", "شَهْرِ", "إِبْرِيل."],
+        correctSentence: "اليَوْمُ الرِّيَاضِيُّ فِي شَهْرِ إِبْرِيل.",
+        malayMeaning: "Hari Sukan pada bulan April."
+      },
+      {
+        id: 6,
+        arabicNum: "٦",
+        pdfScrambled: ["تَفَضَّلْ.", "تَتَأَخَّرْ !", "لَا"],
+        correctWords: ["لَا", "تَتَأَخَّرْ !", "تَفَضَّلْ."],
+        altCorrectWords: ["تَفَضَّلْ.", "لَا", "تَتَأَخَّرْ !"],
+        correctSentence: "لَا تَتَأَخَّرْ ! تَفَضَّلْ.",
+        malayMeaning: "Jangan lewat! Silakan."
+      },
+      {
+        id: 7,
+        arabicNum: "٧",
+        pdfScrambled: ["مُسَاعِدُ", "الجَدِيدُ.", "هُوَ", "المُدِيرِ"],
+        correctWords: ["هُوَ", "مُسَاعِدُ", "المُدِيرِ", "الجَدِيدُ."],
+        correctSentence: "هُوَ مُسَاعِدُ المُدِيرِ الجَدِيدُ.",
+        malayMeaning: "Beliau ialah Penolong Kanan yang baharu."
+      },
+      {
+        id: 8,
+        arabicNum: "٨",
+        pdfScrambled: ["الْكُمْبِيُوتَر.", "أَنَا", "مِن", "مَعْمَلُ"],
+        correctWords: ["أَنَا", "مِن", "مَعْمَلُ", "الْكُمْبِيُوتَر."],
+        correctSentence: "أَنَا مِن مَعْمَلُ الْكُمْبِيُوتَر.",
+        malayMeaning: "Saya dari makmal komputer."
+      },
+      {
+        id: 9,
+        arabicNum: "٩",
+        pdfScrambled: ["الفَصْلُ", "مَعْمَلِ", "يَمِينَ", "العُلُومِ."],
+        correctWords: ["الفَصْلُ", "يَمِينَ", "مَعْمَلِ", "العُلُومِ."],
+        correctSentence: "الفَصْلُ يَمِينَ مَعْمَلِ العُلُومِ.",
+        malayMeaning: "Kelas itu di sebelah kanan makmal sains."
+      },
+      {
+        id: 10,
+        arabicNum: "١٠",
+        pdfScrambled: ["الاِجْتِمَاعِ.", "آسِفَةٌ،", "المُدِيرُ", "فِي"],
+        correctWords: ["آسِفَةٌ،", "المُدِيرُ", "فِي", "الاِجْتِمَاعِ."],
+        correctSentence: "آسِفَةٌ، المُدِيرُ فِي الاِجْتِمَاعِ.",
+        malayMeaning: "Maaf, Guru Besar sedang berada di dalam mesyuarat."
+      }
+    ];
+
+    // Leaderboard starts completely empty until students play
+    const STORAGE_KEY = "roblox_obby_arab_tahun4_v1";
+    const TEACHER_USER = "admin";
+    const TEACHER_PASS = "admin123";
+
+    // =========================================================================
+    // 2. PEMBOLEH UBAH KEADAAN PERMAINAN (STATE)
+    // =========================================================================
+    let soundEnabled = true;
+    let audioCtx = null;
+    let isTeacherLoggedIn = false;
+
+    let currentPlayer = {
+      name: "",
+      className: "4 Proaktif",
+      club: "Blox Builder",
+      clubShort: "🧱",
+      clubColor: "#02b757"
+    };
+    let questionStartTimeMs = 0;
+    let questionElapsedSec = 0;
+    let questionSpeedInterval = null;
+
+    let currentQIdx = 0;
+    let totalScore = 0;
+    let currentAttempt = 1;
+    let questionResolved = false;
+
+    let bankWords = [];
+    let selectedSlotIds = [];
+    let sessionHistory = [];
+
+    let timerInterval = null;
+    let elapsedSeconds = 0;
+    let currentReviewTab = "mistakes";
+
+    // =========================================================================
+    // 3. SISTEM AUDIO WEB (TIADA FAIL LUARAN DIPERLUKAN)
+    // =========================================================================
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playSoundEffect(type) {
+      if (!soundEnabled) return;
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      if (type === "pop") {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(520, now);
+        osc.frequency.exponentialRampToValueAtTime(780, now + 0.08);
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.09);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.09);
+      } else if (type === "whistle") {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(2600, now);
+        osc.frequency.setValueAtTime(2800, now + 0.08);
+        osc.frequency.setValueAtTime(2550, now + 0.16);
+        gain.gain.setValueAtTime(0.18, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.38);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.4);
+      } else if (type === "goal") {
+        const notes = [523.25, 659.25, 783.99, 1046.5];
+        notes.forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(freq, now + i * 0.09);
+          gain.gain.setValueAtTime(0.2, now + i * 0.09);
+          gain.gain.exponentialRampToValueAtTime(0.008, now + i * 0.09 + 0.45);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + i * 0.09);
+          osc.stop(now + i * 0.09 + 0.46);
+        });
+      } else if (type === "miss") {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sawtooth";
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.linearRampToValueAtTime(130, now + 0.28);
+        gain.gain.setValueAtTime(0.16, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.31);
+      }
+    }
+
+    let cachedArabicVoices = [];
+    let speakQueueTimeout = null;
+    let autoArrangeSentenceTimer = null;
+    let indicatorHideTimer = null;
+    let activeTtsAudio = null;
+
+    function initArabicVoices() {
+      if (!("speechSynthesis" in window)) return;
+      try {
+        const voices = window.speechSynthesis.getVoices();
+        if (voices && voices.length > 0) {
+          cachedArabicVoices = voices;
+        }
+      } catch (e) {}
+    }
+
+    if ("speechSynthesis" in window) {
+      initArabicVoices();
+      if (typeof window.speechSynthesis.onvoiceschanged !== "undefined") {
+        window.speechSynthesis.onvoiceschanged = initArabicVoices;
+      }
+    }
+
+    function showSpeakingBanner(arabicText) {
+      const ind = document.getElementById("speakingIndicator");
+      const txtEl = document.getElementById("speakingIndicatorText");
+      if (!ind || !txtEl) return;
+      txtEl.textContent = arabicText;
+      ind.classList.add("active");
+      if (indicatorHideTimer) clearTimeout(indicatorHideTimer);
+      indicatorHideTimer = setTimeout(() => {
+        ind.classList.remove("active");
+      }, 4000);
+    }
+
+    const ARABIC_PHONETIC_MAP = {
+      "جِئْتُ مِنْ دُكَّانِ المَدْرَسَةِ.": "Ji'tu min dukkaanil madrasati",
+      "جِئْتُ": "Ji'tu",
+      "مِنْ": "Min",
+      "دُكَّانِ": "Dukkaani",
+      "المَدْرَسَةِ.": "Al-madrasati",
+      "هِيَ أَمِينَةُ المَكْتَبَةِ المُجْتَهِدَةُ.": "Hiya amiinatul maktabatil mujtahidatu",
+      "هِيَ": "Hiya",
+      "أَمِينَةُ": "Amiinatu",
+      "المَكْتَبَةِ": "Al-maktabati",
+      "المُجْتَهِدَةُ.": "Al-mujtahidatu",
+      "أُرِيدُ أَنْ أُقَابِلَ المُدِيرَ.": "Uriidu an uqaabilal mudiira",
+      "أُرِيدُ": "Uriidu",
+      "أَنْ": "An",
+      "أُقَابِلَ": "Uqaabila",
+      "المُدِيرَ.": "Al-mudiira",
+      "كُلُّ عَامٍ وَأَنْتُمْ بِخَيْرٍ.": "Kullu 'aamin wa antum bikhairin",
+      "كُلُّ": "Kullu",
+      "عَامٍ": "'Aamin",
+      "وَأَنْتُمْ": "Wa antum",
+      "بِخَيْرٍ.": "Bikhairin",
+      "اليَوْمُ الرِّيَاضِيُّ فِي شَهْرِ إِبْرِيل.": "Al-yaumur riyaadhiyyu fii syahri Ibriil",
+      "اليَوْمُ": "Al-yaumu",
+      "الرِّيَاضِيُّ": "Ar-riyaadhiyyu",
+      "فِي": "Fii",
+      "شَهْرِ": "Syahri",
+      "إِبْرِيل.": "Ibriil",
+      "لَا تَتَأَخَّرْ ! تَفَضَّلْ.": "Laa tata'akkhar! Tafaddhal",
+      "تَفَضَّلْ. لَا تَتَأَخَّرْ !": "Tafaddhal. Laa tata'akkhar!",
+      "لَا": "Laa",
+      "تَتَأَخَّرْ !": "Tata'akkhar",
+      "تَفَضَّلْ.": "Tafaddhal",
+      "هُوَ مُسَاعِدُ المُدِيرِ الجَدِيدُ.": "Huwa musaa'idul mudiiril jadiidu",
+      "هُوَ": "Huwa",
+      "مُسَاعِدُ": "Musaa'idu",
+      "المُدِيرِ": "Al-mudiiri",
+      "الجَدِيدُ.": "Al-jadiidu",
+      "أَنَا مِن مَعْمَلُ الْكُمْبِيُوتَر.": "Anaa min ma'malul kumbiyuutar",
+      "أَنَا": "Anaa",
+      "مِن": "Min",
+      "مَعْمَلُ": "Ma'malu",
+      "الْكُمْبِيُوتَر.": "Al-kumbiyuutar",
+      "الفَصْلُ يَمِينَ مَعْمَلِ العُلُومِ.": "Al-faslu yamiina ma'malil 'uluumi",
+      "الفَصْلُ": "Al-faslu",
+      "يَمِينَ": "Yamiina",
+      "مَعْمَلِ": "Ma'mali",
+      "العُلُومِ.": "Al-'uluumi",
+      "آسِفَةٌ، المُدِيرُ فِي الاِجْتِمَاعِ.": "Aasifatun, al-mudiiru fil ijtimaa'i",
+      "آسِفَةٌ،": "Aasifatun",
+      "المُدِيرُ": "Al-mudiiru",
+      "الاِجْتِمَاعِ.": "Al-ijtimaa'i"
+    };
+
+    function toPhoneticSentence(arabicText) {
+      const trimmed = String(arabicText).trim();
+      if (ARABIC_PHONETIC_MAP[trimmed]) return ARABIC_PHONETIC_MAP[trimmed];
+      return trimmed
+        .split(/\s+/)
+        .map(w => ARABIC_PHONETIC_MAP[w] || w)
+        .join(" ");
+    }
+
+    function speakPhoneticWithSystemVoice(arabicText) {
+      if (!("speechSynthesis" in window)) return;
+      try {
+        initArabicVoices();
+        const phoneticStr = toPhoneticSentence(arabicText);
+        const utterP = new SpeechSynthesisUtterance(phoneticStr);
+        window._currentArabicUtterance = utterP;
+        const voiceP = cachedArabicVoices.find(
+          v => v.lang && (v.lang.toLowerCase().startsWith("id") || v.lang.toLowerCase().startsWith("ms"))
+        ) || cachedArabicVoices.find(
+          v => v.lang && v.lang.toLowerCase().startsWith("en")
+        ) || cachedArabicVoices[0] || null;
+        if (voiceP) {
+          utterP.voice = voiceP;
+          utterP.lang = voiceP.lang;
+        } else {
+          utterP.lang = "id-ID";
+        }
+        utterP.rate = 0.85;
+        utterP.pitch = 1.0;
+        utterP.volume = 1.0;
+        if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+        window.speechSynthesis.speak(utterP);
+      } catch (e) {}
+    }
+
+    function playCloudArabicMp3Fallback(arabicText) {
+      try {
+        if (activeTtsAudio) {
+          activeTtsAudio.pause();
+          activeTtsAudio = null;
+        }
+        const cleanQ = encodeURIComponent(String(arabicText).trim());
+        const url = "https://translate.googleapis.com/translate_tts?client=gtx&ie=UTF-8&tl=ar&dt=t&q=" + cleanQ;
+        const audio = new Audio(url);
+        activeTtsAudio = audio;
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            const url2 = "https://translate.google.com/translate_tts?ie=UTF-8&tl=ar&client=tw-ob&q=" + cleanQ;
+            const audio2 = new Audio(url2);
+            activeTtsAudio = audio2;
+            audio2.play().catch(() => {
+              speakPhoneticWithSystemVoice(arabicText);
+            });
+          });
+        }
+      } catch (e) {
+        speakPhoneticWithSystemVoice(arabicText);
+      }
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      const btn = document.getElementById("btnSoundToggle");
+      btn.textContent = soundEnabled ? "🔊 Bunyi: ON" : "🔇 Bunyi: OFF";
+      if (!soundEnabled) {
+        if ("speechSynthesis" in window) {
+          try { window.speechSynthesis.cancel(); } catch (e) {}
+        }
+        if (activeTtsAudio) {
+          try { activeTtsAudio.pause(); } catch (e) {}
+        }
+      }
+    }
+
+    function speakArabicText(text, isPrioritySentence = false) {
+      if (!text) return;
+      if (!soundEnabled && !isPrioritySentence) return;
+
+      const arabicStr = String(text).trim();
+      showSpeakingBanner(arabicStr);
+
+      if (speakQueueTimeout) {
+        clearTimeout(speakQueueTimeout);
+        speakQueueTimeout = null;
+      }
+
+      if (!("speechSynthesis" in window)) {
+        playCloudArabicMp3Fallback(arabicStr);
+        return;
+      }
+
+      initArabicVoices();
+
+      const executeSpeech = () => {
+        try {
+          if (window.speechSynthesis.paused) {
+            window.speechSynthesis.resume();
+          }
+
+          const utter = new SpeechSynthesisUtterance(arabicStr);
+          // Simpan rujukan global supaya Chrome tidak memadamkan objek Utterance semasa membaca ayat
+          window._currentArabicUtterance = utter;
+          utter.lang = "ar-SA";
+          utter.rate = 0.85;
+          utter.pitch = 1.0;
+          utter.volume = 1.0;
+
+          // Jika peranti mempunyai suara Bahasa Arab dalam senarai getVoices(), pilih suara tersebut
+          const matchedArVoice = cachedArabicVoices.find(
+            v => v.lang && v.lang.toLowerCase().startsWith("ar")
+          );
+          if (matchedArVoice) {
+            utter.voice = matchedArVoice;
+          }
+
+          let startedAt = 0;
+          let fallbackDone = false;
+
+          const runFallback = () => {
+            if (fallbackDone) return;
+            fallbackDone = true;
+            playCloudArabicMp3Fallback(arabicStr);
+          };
+
+          utter.onstart = () => {
+            startedAt = Date.now();
+          };
+
+          utter.onend = () => {
+            const elapsed = startedAt ? (Date.now() - startedAt) : 0;
+            if (elapsed < 100) {
+              runFallback();
+            }
+          };
+
+          utter.onerror = (ev) => {
+            if (ev && (ev.error === "interrupted" || ev.error === "canceled")) return;
+            runFallback();
+          };
+
+          window.speechSynthesis.speak(utter);
+
+          speakQueueTimeout = setTimeout(() => {
+            if (!startedAt && !window.speechSynthesis.speaking) {
+              runFallback();
+            }
+          }, 450);
+        } catch (err) {
+          playCloudArabicMp3Fallback(arabicStr);
+        }
+      };
+
+      try {
+        // Elakkan pepijat Chrome di mana cancel() membatalkan speak() yang dipanggil pada milisaat yang sama
+        if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+          window.speechSynthesis.cancel();
+          speakQueueTimeout = setTimeout(executeSpeech, 90);
+        } else {
+          executeSpeech();
+        }
+      } catch (e) {
+        executeSpeech();
+      }
+    }
+
+    function speakCurrentTargetSentence() {
+      const q = QUESTIONS_DATA[currentQIdx];
+      if (q) speakArabicText(q.correctSentence, true);
+    }
+
+    // =========================================================================
+    // 4. LOG MASUK MURID & PILIHAN KELAS (5 PROAKTIF & 5 PROGRESIF SAHAJA)
+    // =========================================================================
+    function selectStudentClass(clsName) {
+      document.getElementById("inputPlayerClass").value = clsName;
+      document.getElementById("classCardProaktif").classList.toggle("selected", clsName === "4 Proaktif");
+      document.getElementById("classCardProgresif").classList.toggle("selected", clsName === "4 Progresif");
+      playSoundEffect("pop");
+    }
+
+    function selectJersey(el) {
+      document.querySelectorAll(".jersey-option").forEach(opt => opt.classList.remove("selected"));
+      el.classList.add("selected");
+      currentPlayer.club = el.getAttribute("data-club");
+      currentPlayer.clubColor = el.getAttribute("data-color");
+      currentPlayer.clubShort = el.querySelector(".jersey-badge").textContent.trim();
+      playSoundEffect("pop");
+    }
+
+    function calculateBasePointsForAttempt(attemptNumber) {
+      if (attemptNumber <= 1) return 50;
+      if (attemptNumber === 2) return 40;
+      if (attemptNumber === 3) return 30;
+      if (attemptNumber === 4) return 20;
+      return 10;
+    }
+
+    function calculateSpeedBonusForSeconds(sec) {
+      if (sec <= 5) return 50;
+      return Math.max(5, 55 - sec);
+    }
+
+    function calculatePointsForAttempt(attemptNumber, sec = questionElapsedSec) {
+      const basePts = calculateBasePointsForAttempt(attemptNumber);
+      const speedBonus = calculateSpeedBonusForSeconds(sec);
+      return basePts + speedBonus;
+    }
+
+    function updateLiveSpeedMeterUI() {
+      const basePts = calculateBasePointsForAttempt(currentAttempt);
+      const speedBonus = calculateSpeedBonusForSeconds(questionElapsedSec);
+      const totalPotential = basePts + speedBonus;
+
+      const secEl = document.getElementById("qTimerSecondsText");
+      const bonusEl = document.getElementById("speedBonusLiveText");
+      const barEl = document.getElementById("speedBarFill");
+      const potBadge = document.getElementById("potentialPointsBadge");
+      const attTxt = document.getElementById("attemptCounterText");
+
+      if (secEl) secEl.textContent = `${questionElapsedSec} saat`;
+      if (bonusEl) {
+        if (questionElapsedSec <= 5) {
+          bonusEl.textContent = `⚡ Bonus Kepantasan: +${speedBonus}m (Pantas Kilat!)`;
+        } else {
+          bonusEl.textContent = `⚡ Bonus Kepantasan Semasa: +${speedBonus} Markah`;
+        }
+      }
+      if (barEl) {
+        const pct = Math.max(10, Math.round((speedBonus / 50) * 100));
+        barEl.style.width = `${pct}%`;
+      }
+      if (attTxt) attTxt.textContent = `Percubaan: Ke-${currentAttempt} (Asas ${basePts}m)`;
+      if (potBadge) potBadge.textContent = `Ganjaran Semasa: +${totalPotential} Markah`;
+    }
+
+    function goHomeScreen() {
+      if (timerInterval) clearInterval(timerInterval);
+      if (questionSpeedInterval) clearInterval(questionSpeedInterval);
+      renderLeaderboardTables();
+      showScreen("screenLogin");
+    }
+
+    function startGame(e) {
+      if (e) e.preventDefault();
+      const nameVal = document.getElementById("inputPlayerName").value.trim();
+      const classVal = document.getElementById("inputPlayerClass").value.trim();
+
+      if (!nameVal) {
+        showToast("⚠️ Sila masukkan Nama Sebenar anda terlebih dahulu!", "error");
+        document.getElementById("inputPlayerName").focus();
+        return;
+      }
+
+      if (classVal !== "4 Proaktif" && classVal !== "4 Progresif") {
+        showToast("⚠️ Sila pilih kelas 4 Proaktif atau 4 Progresif sahaja.", "error");
+        return;
+      }
+
+      currentPlayer.name = nameVal;
+      currentPlayer.className = classVal;
+
+      document.getElementById("hudPlayerName").textContent = currentPlayer.name;
+      document.getElementById("hudPlayerClass").textContent = currentPlayer.className;
+      const badge = document.getElementById("hudClubBadge");
+      badge.textContent = currentPlayer.clubShort;
+      badge.style.background = currentPlayer.clubColor;
+      badge.style.color = "#03071e";
+
+      currentQIdx = 0;
+      totalScore = 0;
+      sessionHistory = QUESTIONS_DATA.map(q => ({
+        qId: q.id,
+        attemptsCount: 0,
+        pointsEarned: 0,
+        wrongSubmissions: []
+      }));
+
+      elapsedSeconds = 0;
+      if (timerInterval) clearInterval(timerInterval);
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        elapsedSeconds++;
+        updateTimerDisplay();
+      }, 1000);
+
+      playSoundEffect("whistle");
+      showScreen("screenGame");
+      loadQuestion(0);
+    }
+
+    function updateTimerDisplay() {
+      const mins = String(Math.floor(elapsedSeconds / 60)).padStart(2, "0");
+      const secs = String(elapsedSeconds % 60).padStart(2, "0");
+      document.getElementById("hudTimer").textContent = `${mins}:${secs}`;
+    }
+
+    function showScreen(screenId) {
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      document.getElementById(screenId).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // =========================================================================
+    // 5. MEKANIK PERMAINAN SUSUN PERKATAAN BAHASA ARAB
+    // =========================================================================
+    function renderHudDots() {
+      const container = document.getElementById("hudMatchDots");
+      container.innerHTML = "";
+      QUESTIONS_DATA.forEach((q, idx) => {
+        const dot = document.createElement("div");
+        dot.className = "match-dot";
+        dot.textContent = idx + 1;
+        const hist = sessionHistory[idx];
+        if (idx === currentQIdx) {
+          dot.classList.add("current");
+        } else if (hist && hist.attemptsCount === 1 && hist.pointsEarned > 0) {
+          dot.classList.add("done-perfect");
+        } else if (hist && hist.pointsEarned > 0) {
+          dot.classList.add("done-retry");
+        }
+        container.appendChild(dot);
+      });
+
+      const pads = document.querySelectorAll("#obbyPlatformsRow .obby-pad");
+      pads.forEach((pad, idx) => {
+        const hist = sessionHistory[idx];
+        pad.classList.toggle("done", Boolean(hist && hist.pointsEarned > 0));
+      });
+    }
+
+    function updatePitchBallPosition(qIdx, isGoal = false) {
+      const runner = document.getElementById("pitchBallRunner");
+      const tag = document.getElementById("pitchBallTag");
+      const basePercent = 9 + (qIdx * 8.2);
+      runner.style.left = isGoal ? `${Math.min(91, basePercent + 4)}%` : `${basePercent}%`;
+      runner.style.top = isGoal ? "28%" : "44%";
+      if (isGoal) {
+        runner.classList.add("goal-anim");
+        tag.textContent = "LOMPATAN TEPAT! 🚀";
+      } else {
+        runner.classList.remove("goal-anim");
+        tag.textContent = `Stage ${qIdx + 1}/10`;
+      }
+    }
+
+    function loadQuestion(idx) {
+      currentQIdx = idx;
+      currentAttempt = 1;
+      questionResolved = false;
+      questionStartTimeMs = Date.now();
+      questionElapsedSec = 0;
+
+      if (questionSpeedInterval) clearInterval(questionSpeedInterval);
+      questionSpeedInterval = setInterval(() => {
+        if (!questionResolved) {
+          questionElapsedSec = Math.floor((Date.now() - questionStartTimeMs) / 1000);
+          updateLiveSpeedMeterUI();
+        }
+      }, 250);
+
+      const q = QUESTIONS_DATA[idx];
+      document.getElementById("hudQIndex").textContent = idx + 1;
+      document.getElementById("hudScore").textContent = totalScore;
+      document.getElementById("qNumberBadge").textContent = `🧱 Stage ${q.arabicNum} daripada ١٠`;
+      document.getElementById("meaningHintBox").textContent = `Maksud: "${q.malayMeaning}"`;
+
+      updateAttemptBadges();
+      renderHudDots();
+      updatePitchBallPosition(idx, false);
+
+      bankWords = q.pdfScrambled.map((w, i) => ({
+        id: `w_${idx}_${i}`,
+        text: w
+      }));
+
+      selectedSlotIds = [];
+
+      const slotArea = document.getElementById("sentenceSlotArea");
+      slotArea.classList.remove("shake", "correct-glow");
+      hideFeedback();
+
+      document.getElementById("btnCheckAnswer").disabled = false;
+      document.getElementById("btnCheckAnswer").style.display = "inline-flex";
+      document.getElementById("btnResetWords").disabled = false;
+      document.getElementById("btnNextQuestion").classList.remove("show");
+
+      renderWordAreas();
+    }
+
+    function updateAttemptBadges() {
+      updateLiveSpeedMeterUI();
+    }
+
+    function renderWordAreas() {
+      const slotArea = document.getElementById("sentenceSlotArea");
+      const bankArea = document.getElementById("wordBankArea");
+
+      slotArea.innerHTML = "";
+      bankArea.innerHTML = "";
+
+      if (selectedSlotIds.length === 0) {
+        const placeholder = document.createElement("div");
+        placeholder.className = "empty-slot-placeholder";
+        placeholder.textContent = "Klik perkataan di bawah untuk menyusun ayat Bahasa Arab di sini (dari kanan ke kiri)...";
+        slotArea.appendChild(placeholder);
+      } else {
+        selectedSlotIds.forEach((wId, orderIdx) => {
+          const wordObj = bankWords.find(w => w.id === wId);
+          if (!wordObj) return;
+          const card = document.createElement("div");
+          card.className = "arabic-word-card in-slot";
+          card.innerHTML = `
+            <span class="word-order-num">${orderIdx + 1}</span>
+            <span>${wordObj.text}</span>
+          `;
+          card.onclick = () => {
+            if (questionResolved) return;
+            selectedSlotIds = selectedSlotIds.filter(id => id !== wId);
+            playSoundEffect("pop");
+            renderWordAreas();
+          };
+          slotArea.appendChild(card);
+        });
+      }
+
+      bankWords.forEach(wordObj => {
+        if (selectedSlotIds.includes(wordObj.id)) return;
+        const card = document.createElement("div");
+        card.className = "arabic-word-card";
+        card.textContent = wordObj.text;
+        card.onclick = () => {
+          if (questionResolved) return;
+          if (autoArrangeSentenceTimer) {
+            clearTimeout(autoArrangeSentenceTimer);
+            autoArrangeSentenceTimer = null;
+          }
+          selectedSlotIds.push(wordObj.id);
+          playSoundEffect("pop");
+          speakArabicText(wordObj.text);
+          renderWordAreas();
+
+          // Bacaan automatik ayat penuh sebaik sahaja semua perkataan selesai disusun
+          const currentQ = QUESTIONS_DATA[currentQIdx];
+          if (currentQ && selectedSlotIds.length === currentQ.correctWords.length) {
+            const arrangedSentence = selectedSlotIds
+              .map(id => {
+                const found = bankWords.find(w => w.id === id);
+                return found ? found.text : "";
+              })
+              .filter(Boolean)
+              .join(" ");
+            autoArrangeSentenceTimer = setTimeout(() => {
+              if (!questionResolved && selectedSlotIds.length === currentQ.correctWords.length) {
+                speakArabicText(arrangedSentence, true);
+              }
+            }, 950);
+          }
+        };
+        bankArea.appendChild(card);
+      });
+    }
+
+    function resetCurrentQuestionWords() {
+      if (questionResolved) return;
+      selectedSlotIds = [];
+      hideFeedback();
+      playSoundEffect("pop");
+      renderWordAreas();
+    }
+
+    function showFeedback(type, mainMsg, subMsg = "") {
+      const banner = document.getElementById("feedbackBanner");
+      banner.className = `feedback-banner show ${type}`;
+      document.getElementById("feedbackText").textContent = mainMsg;
+      document.getElementById("feedbackSubText").textContent = subMsg;
+    }
+
+    function hideFeedback() {
+      const banner = document.getElementById("feedbackBanner");
+      banner.className = "feedback-banner";
+    }
+
+    function submitAnswer() {
+      if (questionResolved) return;
+      const q = QUESTIONS_DATA[currentQIdx];
+
+      if (selectedSlotIds.length < q.correctWords.length) {
+        showFeedback("error", "⚠️ Sila pilih kesemua perkataan sebelum merembat gol!", `${selectedSlotIds.length}/${q.correctWords.length} perkataan dipilih.`);
+        playSoundEffect("miss");
+        return;
+      }
+
+      const userWords = selectedSlotIds.map(id => bankWords.find(w => w.id === id).text);
+      const userSentence = userWords.join(" ");
+      const matchPrimary = userWords.every((w, idx) => w === q.correctWords[idx]);
+      const matchAlt = Boolean(q.altCorrectWords && userWords.every((w, idx) => w === q.altCorrectWords[idx]));
+      const isCorrect = matchPrimary || matchAlt;
+
+      const hist = sessionHistory[currentQIdx];
+      hist.attemptsCount = currentAttempt;
+
+      if (isCorrect) {
+        questionResolved = true;
+        if (questionSpeedInterval) clearInterval(questionSpeedInterval);
+        questionElapsedSec = Math.floor((Date.now() - questionStartTimeMs) / 1000);
+
+        const basePts = calculateBasePointsForAttempt(currentAttempt);
+        const speedBonus = calculateSpeedBonusForSeconds(questionElapsedSec);
+        const earned = basePts + speedBonus;
+        hist.pointsEarned = earned;
+        hist.timeSec = questionElapsedSec;
+        hist.speedBonus = speedBonus;
+        totalScore += earned;
+
+        document.getElementById("hudScore").textContent = totalScore;
+        const slotArea = document.getElementById("sentenceSlotArea");
+        slotArea.classList.remove("shake");
+        slotArea.classList.add("correct-glow");
+
+        if (autoArrangeSentenceTimer) {
+          clearTimeout(autoArrangeSentenceTimer);
+          autoArrangeSentenceTimer = null;
+        }
+        playSoundEffect("goal");
+        const spokenSentence = matchAlt ? userSentence : q.correctSentence;
+        setTimeout(() => {
+          speakArabicText(spokenSentence, true);
+        }, 180);
+
+        updatePitchBallPosition(currentQIdx, true);
+        const overlay = document.getElementById("pitchBannerOverlay");
+        const bannerTxt = document.getElementById("pitchBannerText");
+        bannerTxt.textContent = `🚀 STAGE CLEAR!! +${earned} MARKAH! (${questionElapsedSec}s)`;
+        overlay.classList.add("show");
+        setTimeout(() => {
+          overlay.classList.remove("show");
+        }, 1450);
+
+        showFeedback(
+          "success",
+          `✅ Stage Lepas dalam ${questionElapsedSec} saat (Percubaan Ke-${currentAttempt})! Markah Asas: +${basePts}m | Bonus Kepantasan: +${speedBonus}m = +${earned} Markah!`,
+          `Ayat Betul: ${spokenSentence}`
+        );
+
+        document.getElementById("btnCheckAnswer").style.display = "none";
+        document.getElementById("btnResetWords").disabled = true;
+
+        const nextBtn = document.getElementById("btnNextQuestion");
+        nextBtn.classList.add("show");
+        nextBtn.textContent = (currentQIdx === QUESTIONS_DATA.length - 1)
+          ? "🏁 Tamatkan Perlawanan & Lihat Keputusan"
+          : "➡️ Soalan Seterusnya";
+
+        renderHudDots();
+      } else {
+        if (!hist.wrongSubmissions.includes(userSentence)) {
+          hist.wrongSubmissions.push(userSentence);
+        }
+
+        let rightPosCount = 0;
+        userWords.forEach((w, i) => {
+          if (w === q.correctWords[i]) rightPosCount++;
+        });
+
+        playSoundEffect("miss");
+        const slotArea = document.getElementById("sentenceSlotArea");
+        slotArea.classList.remove("shake");
+        void slotArea.offsetWidth;
+        slotArea.classList.add("shake");
+
+        currentAttempt++;
+        updateAttemptBadges();
+        const nextPts = calculatePointsForAttempt(currentAttempt);
+
+        showFeedback(
+          "error",
+          `❌ Tersasar! Susunan ayat belum tepat (${rightPosCount} daripada ${q.correctWords.length} perkataan berada di posisi yang betul).`,
+          `Cuba susun semula untuk Percubaan Ke-${currentAttempt} (+${nextPts} Markah).`
+        );
+      }
+    }
+
+    function goToNextQuestion() {
+      if (currentQIdx < QUESTIONS_DATA.length - 1) {
+        loadQuestion(currentQIdx + 1);
+      } else {
+        finishGameSession();
+      }
+    }
+
+    // =========================================================================
+    // 6. TAMAT PERMAINAN, SEMAKAN JAWAPAN SALAH & LEADERBOARD
+    // =========================================================================
+    function finishGameSession() {
+      if (timerInterval) clearInterval(timerInterval);
+      if (questionSpeedInterval) clearInterval(questionSpeedInterval);
+      playSoundEffect("whistle");
+
+      const firstTryCount = sessionHistory.filter(h => h.attemptsCount === 1 && h.pointsEarned > 0).length;
+      const mistakeQuestions = sessionHistory.filter(h => h.wrongSubmissions.length > 0);
+
+      const newEntry = {
+        id: "user_" + Date.now(),
+        name: currentPlayer.name,
+        className: currentPlayer.className,
+        club: currentPlayer.club,
+        clubShort: currentPlayer.clubShort,
+        score: totalScore,
+        firstTry: firstTryCount,
+        timeSec: elapsedSeconds,
+        isCurrentUser: true,
+        timestamp: new Date().toLocaleString("ms-MY"),
+        history: JSON.parse(JSON.stringify(sessionHistory))
+      };
+
+      const board = getLeaderboardData();
+      board.forEach(b => b.isCurrentUser = false);
+      board.push(newEntry);
+      saveLeaderboardData(board);
+      autoSaveRecordToCloud(newEntry);
+
+      const sorted = sortLeaderboard(board);
+      const myRank = sorted.findIndex(item => item.id === newEntry.id) + 1;
+
+      document.getElementById("resPlayerTitle").textContent = `Tahniah, ${currentPlayer.name} (${currentPlayer.className})!`;
+      document.getElementById("resTotalScore").textContent = `${totalScore} / 1000 Markah`;
+
+      let comment = "Usaha yang sangat baik! Teruskan latihan Bahasa Arab anda!";
+      if (totalScore >= 900) comment = "🌟 Luar Biasa! Master Roblox Obby Bahasa Arab Tahun 4!";
+      else if (totalScore >= 750) comment = "🔥 Hebat! Kepantasan & Ketepatan Bertaraf Pro Builder!";
+      else if (totalScore >= 550) comment = "🧱 Bagus! Semak analisis Checkpoint di bawah untuk tingkatkan lagi kelajuan.";
+      document.getElementById("resRankComment").textContent = comment;
+
+      document.getElementById("resFirstTryCount").textContent = `${firstTryCount} / 10`;
+      document.getElementById("resMistakeQCount").textContent = `${mistakeQuestions.length} Soalan`;
+      document.getElementById("resTimeTaken").textContent = formatTime(elapsedSeconds);
+      document.getElementById("resLeaderboardPos").textContent = `#${myRank} / ${sorted.length}`;
+
+      document.getElementById("mistakeBadgeCount").textContent = mistakeQuestions.length;
+
+      currentReviewTab = "mistakes";
+      document.getElementById("tabMistakesOnly").classList.add("active");
+      document.getElementById("tabAllQuestions").classList.remove("active");
+
+      renderReviewSection();
+      renderLeaderboardTables();
+
+      showScreen("screenResult");
+    }
+
+    function switchReviewTab(tabName) {
+      currentReviewTab = tabName;
+      document.getElementById("tabMistakesOnly").classList.toggle("active", tabName === "mistakes");
+      document.getElementById("tabAllQuestions").classList.toggle("active", tabName === "all");
+      renderReviewSection();
+    }
+
+    function buildReviewCardsHtml(historyArray, onlyMistakes) {
+      const mistakeItems = historyArray.filter(h => h.wrongSubmissions && h.wrongSubmissions.length > 0);
+
+      if (onlyMistakes && mistakeItems.length === 0) {
+        return `
+          <div style="text-align:center; padding:24px; background:rgba(6, 214, 160, 0.1); border:1.5px solid var(--success); border-radius:16px;">
+            <div style="font-size:2.2rem; margin-bottom:6px;">🌟</div>
+            <h4 style="font-size:1.1rem; color:#a7f3d0; margin-bottom:6px;">Rekod Bersih Tanpa Kesilapan! (10/10 Tepat Percubaan Pertama)</h4>
+            <p style="color:#cbd5e1; font-size:0.9rem;">
+              Tiada sebarang jawapan salah direkodkan kerana kesemua 10 soalan dijawab dengan betul pada percubaan pertama!
+            </p>
+          </div>
+        `;
+      }
+
+      const listToRender = onlyMistakes ? mistakeItems : historyArray;
+
+      return listToRender.map(hist => {
+        const q = QUESTIONS_DATA.find(item => item.id === hist.qId);
+        if (!q) return "";
+        const hadMistake = hist.wrongSubmissions && hist.wrongSubmissions.length > 0;
+
+        let wrongHtml = "";
+        if (hadMistake) {
+          const wrongLines = hist.wrongSubmissions.map((wSent, idx) =>
+            `<div style="margin-top:4px;">❌ (${idx + 1}) ${escapeHtml(wSent)}</div>`
+          ).join("");
+          wrongHtml = `
+            <div class="arabic-sentence-box wrong-ans-box">
+              <span class="box-tag" style="color:#fda4af; direction:ltr; text-align:left;">
+                ⚠️ Jawapan Salah Yang Dicuba (${hist.wrongSubmissions.length} kali):
+              </span>
+              ${wrongLines}
+            </div>
+          `;
+        }
+
+        const pts = hist.pointsEarned || 100;
+        const att = hist.attemptsCount || 1;
+        const qSec = hist.timeSec !== undefined ? `${hist.timeSec}s • ` : "";
+        const badgeTier = att === 1 ? 5 : att === 2 ? 4 : att === 3 ? 3 : 2;
+
+        return `
+          <div class="review-item ${hadMistake ? "had-mistake" : "flawless"}">
+            <div class="review-header">
+              <span class="q-badge">Soalan ${q.arabicNum}: ${escapeHtml(q.malayMeaning)}</span>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="pts-badge pts-${badgeTier}">
+                  ${qSec}${att} Percubaan • +${pts} Markah
+                </span>
+                <button class="btn-icon" style="padding:5px 10px; font-size:0.78rem;" onclick="speakArabicText('${q.correctSentence.replace(/'/g, "\\'")}')">
+                  🔊 Sebutan
+                </button>
+              </div>
+            </div>
+            ${wrongHtml}
+            <div class="arabic-sentence-box correct-ans-box">
+              <span class="box-tag" style="color:#6ee7b7; direction:ltr; text-align:left;">
+                ✅ Jawapan Sebenar Yang Betul (Skema Jawapan):
+              </span>
+              <div>${q.correctSentence}</div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderReviewSection() {
+      const container = document.getElementById("reviewListContainer");
+      container.innerHTML = buildReviewCardsHtml(sessionHistory, currentReviewTab === "mistakes");
+    }
+
+    // =========================================================================
+    // 7. PAPAN PENDAHULU (KOSONG SECARA LALAI SEHINGGA MURID MENJAWAB)
+    // =========================================================================
+    function getLeaderboardData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          return [];
+        }
+        return JSON.parse(raw);
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveLeaderboardData(arr) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+      } catch (e) {}
+    }
+
+    function sortLeaderboard(arr) {
+      return [...arr].sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return (a.timeSec || 999) - (b.timeSec || 999);
+      });
+    }
+
+    function formatTime(sec) {
+      const m = String(Math.floor(sec / 60)).padStart(2, "0");
+      const s = String(sec % 60).padStart(2, "0");
+      return `${m}:${s}`;
+    }
+
+    function renderLeaderboardTables() {
+      const allData = sortLeaderboard(getLeaderboardData());
+
+      // 1. Result Screen Table
+      const resFilter = document.getElementById("leaderboardClassFilter")
+        ? document.getElementById("leaderboardClassFilter").value
+        : "ALL";
+      const resFiltered = (resFilter === "ALL")
+        ? allData
+        : allData.filter(d => d.className === resFilter);
+
+      const resBody = document.getElementById("resultLeaderboardBody");
+      if (resBody) {
+        if (resFiltered.length === 0) {
+          resBody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#94a3b8; padding:20px;">Belum ada rekod murid bagi kelas ini.</td></tr>`;
+        } else {
+          resBody.innerHTML = resFiltered.map((row, idx) => {
+            const rank = idx + 1;
+            const medalClass = rank === 1 ? "rank-1" : rank === 2 ? "rank-2" : rank === 3 ? "rank-3" : "rank-other";
+            return `
+              <tr class="${row.isCurrentUser ? "current-user-row" : ""}">
+                <td><span class="rank-medal ${medalClass}">${rank}</span></td>
+                <td>${escapeHtml(row.name)} ${row.isCurrentUser ? "⭐ (Anda)" : ""}</td>
+                <td>${escapeHtml(row.className)}</td>
+                <td><span style="font-size:0.82rem; color:var(--stadium-gold);">${escapeHtml(row.club)}</span></td>
+                <td>${row.firstTry !== undefined ? row.firstTry + "/10" : "-"}</td>
+                <td>${formatTime(row.timeSec || 120)}</td>
+                <td><strong style="color:var(--stadium-cyan); font-size:1.05rem;">${row.score} / 1000</strong></td>
+              </tr>
+            `;
+          }).join("");
+        }
+      }
+
+      // 2. Modal Table
+      const modalFilter = document.getElementById("modalClassFilter")
+        ? document.getElementById("modalClassFilter").value
+        : "ALL";
+      const modalFiltered = (modalFilter === "ALL")
+        ? allData
+        : allData.filter(d => d.className === modalFilter);
+
+      const modalBody = document.getElementById("modalLeaderboardBody");
+      if (modalBody) {
+        if (modalFiltered.length === 0) {
+          modalBody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#94a3b8; padding:24px;">Tiada rekod markah lagi. Papan pendahulu akan dipaparkan sebaik sahaja murid selesai menjawab.</td></tr>`;
+        } else {
+          modalBody.innerHTML = modalFiltered.map((row, idx) => {
+            const rank = idx + 1;
+            const medalClass = rank === 1 ? "rank-1" : rank === 2 ? "rank-2" : rank === 3 ? "rank-3" : "rank-other";
+            return `
+              <tr class="${row.isCurrentUser ? "current-user-row" : ""}">
+                <td><span class="rank-medal ${medalClass}">${rank}</span></td>
+                <td>${escapeHtml(row.name)} ${row.isCurrentUser ? "⭐" : ""}</td>
+                <td>${escapeHtml(row.className)}</td>
+                <td>${escapeHtml(row.club)}</td>
+                <td>${formatTime(row.timeSec || 120)}</td>
+                <td><strong style="color:var(--stadium-cyan);">${row.score} / 1000</strong></td>
+              </tr>
+            `;
+          }).join("");
+        }
+      }
+
+      // 3. Mini Preview on Login Screen
+      const miniPreview = document.getElementById("miniLeaderboardPreview");
+      if (miniPreview) {
+        const top3 = allData.slice(0, 3);
+        if (top3.length === 0) {
+          miniPreview.innerHTML = `
+            <div style="text-align:center; color:#94a3b8; font-size:0.86rem; padding:18px 10px; background:rgba(255,255,255,0.03); border-radius:12px; border:1px dashed rgba(255,255,255,0.14);">
+              ⚽ Tiada rekod pendahulu lagi.<br/>Selesaikan permainan untuk menjadi pendahulu pertama!
+            </div>
+          `;
+        } else {
+          miniPreview.innerHTML = top3.map((row, idx) => {
+            const rank = idx + 1;
+            const medalClass = rank === 1 ? "rank-1" : rank === 2 ? "rank-2" : "rank-3";
+            return `
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border-bottom:1px solid rgba(255,255,255,0.08); font-size:0.86rem;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="rank-medal ${medalClass}" style="width:24px; height:24px; font-size:0.75rem;">${rank}</span>
+                  <div>
+                    <div style="font-weight:700; color:#fff;">${escapeHtml(row.name)}</div>
+                    <div style="font-size:0.74rem; color:#94a3b8;">${escapeHtml(row.className)} • ${escapeHtml(row.club)}</div>
+                  </div>
+                </div>
+                <div style="font-weight:800; color:var(--stadium-cyan);">${row.score} m</div>
+              </div>
+            `;
+          }).join("");
+        }
+      }
+    }
+
+    function openLeaderboardModal() {
+      renderLeaderboardTables();
+      document.getElementById("leaderboardModal").classList.add("open");
+    }
+
+    function closeLeaderboardModal() {
+      document.getElementById("leaderboardModal").classList.remove("open");
+    }
+
+    // =========================================================================
+    // 8. PORTAL SEMAKAN GURU (USERNAME: admin | PASSWORD: admin123)
+    // =========================================================================
+    function openTeacherPortalScreen() {
+      if (timerInterval) clearInterval(timerInterval);
+      if (questionSpeedInterval) clearInterval(questionSpeedInterval);
+      if (isTeacherLoggedIn) {
+        renderTeacherDashboard();
+        showScreen("screenTeacherDashboard");
+      } else {
+        document.getElementById("teacherUsername").value = "";
+        document.getElementById("teacherPassword").value = "";
+        document.getElementById("teacherLoginError").classList.remove("show");
+        showScreen("screenTeacherLogin");
+      }
+    }
+
+    function handleTeacherLogin(e) {
+      e.preventDefault();
+      const u = document.getElementById("teacherUsername").value.trim();
+      const p = document.getElementById("teacherPassword").value;
+
+      if (u === TEACHER_USER && p === TEACHER_PASS) {
+        isTeacherLoggedIn = true;
+        document.getElementById("teacherLoginError").classList.remove("show");
+        playSoundEffect("goal");
+        renderTeacherDashboard();
+        showScreen("screenTeacherDashboard");
+      } else {
+        document.getElementById("teacherLoginError").classList.add("show");
+        playSoundEffect("miss");
+      }
+    }
+
+    function logoutTeacher() {
+      isTeacherLoggedIn = false;
+      goHomeScreen();
+    }
+
+    function renderTeacherDashboard() {
+      const allData = sortLeaderboard(getLeaderboardData());
+      const filterClass = document.getElementById("teacherClassFilter").value;
+      const searchQ = (document.getElementById("teacherSearchInput").value || "").trim().toLowerCase();
+
+      const countProaktif = allData.filter(d => d.className === "4 Proaktif").length;
+      const countProgresif = allData.filter(d => d.className === "4 Progresif").length;
+
+      document.getElementById("tStatTotalStudents").textContent = `${allData.length} Murid`;
+      document.getElementById("tStatClassBreakdown").textContent = `4 Proaktif: ${countProaktif} | 4 Progresif: ${countProgresif}`;
+
+      if (allData.length > 0) {
+        const avg = (allData.reduce((acc, r) => acc + r.score, 0) / allData.length).toFixed(1);
+        const pct = Math.round((avg / 1000) * 100);
+        document.getElementById("tStatAvgScore").textContent = `${avg} / 1000`;
+        document.getElementById("tStatAvgPercent").textContent = `Purata Penguasaan: ${pct}%`;
+
+        const top = allData[0];
+        document.getElementById("tStatTopScore").textContent = `${top.score} / 1000`;
+        document.getElementById("tStatTopStudent").textContent = `${top.name} (${top.className})`;
+      } else {
+        document.getElementById("tStatAvgScore").textContent = "0 / 1000";
+        document.getElementById("tStatAvgPercent").textContent = "Belum ada data";
+        document.getElementById("tStatTopScore").textContent = "0 / 1000";
+        document.getElementById("tStatTopStudent").textContent = "-";
+      }
+
+      // Compute per-question error statistics across all students
+      const qStats = QUESTIONS_DATA.map(q => ({
+        qId: q.id,
+        arabicNum: q.arabicNum,
+        correctSentence: q.correctSentence,
+        malayMeaning: q.malayMeaning,
+        studentsWithMistakes: 0,
+        totalWrongAttempts: 0
+      }));
+
+      allData.forEach(student => {
+        if (!student.history) return;
+        student.history.forEach(h => {
+          const qs = qStats.find(item => item.qId === h.qId);
+          if (qs && h.wrongSubmissions && h.wrongSubmissions.length > 0) {
+            qs.studentsWithMistakes++;
+            qs.totalWrongAttempts += h.wrongSubmissions.length;
+          }
+        });
+      });
+
+      const sortedByDifficulty = [...qStats].sort((a, b) => b.studentsWithMistakes - a.studentsWithMistakes);
+      if (sortedByDifficulty[0] && sortedByDifficulty[0].studentsWithMistakes > 0) {
+        const hardest = sortedByDifficulty[0];
+        document.getElementById("tStatHardestQ").textContent = `Soalan ${hardest.qId}`;
+        document.getElementById("tStatHardestQSub").textContent = `${hardest.studentsWithMistakes} murid melakukan kesilapan`;
+      } else {
+        document.getElementById("tStatHardestQ").textContent = "Tiada";
+        document.getElementById("tStatHardestQSub").textContent = allData.length === 0 ? "Belum ada murid menjawab" : "Semua murid menjawab tepat 1x";
+      }
+
+      // Filter student table
+      const filteredStudents = allData.filter(d => {
+        const matchClass = (filterClass === "ALL") || (d.className === filterClass);
+        const matchName = !searchQ || d.name.toLowerCase().includes(searchQ);
+        return matchClass && matchName;
+      });
+
+      const tbody = document.getElementById("teacherStudentTableBody");
+      if (filteredStudents.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:#94a3b8; padding:26px;">Belum ada rekod penyertaan murid. Rekod akan tertera secara automatik sebaik sahaja murid selesai menjawab.</td></tr>`;
+      } else {
+        tbody.innerHTML = filteredStudents.map((row, idx) => {
+          const rank = idx + 1;
+          const medalClass = rank === 1 ? "rank-1" : rank === 2 ? "rank-2" : rank === 3 ? "rank-3" : "rank-other";
+          const mistakeCount = row.history
+            ? row.history.filter(h => h.wrongSubmissions && h.wrongSubmissions.length > 0).length
+            : (10 - (row.firstTry || 0));
+
+          return `
+            <tr>
+              <td><span class="rank-medal ${medalClass}">${rank}</span></td>
+              <td>
+                <div style="font-weight:800; color:#fff;">${escapeHtml(row.name)}</div>
+                <div style="font-size:0.74rem; color:#94a3b8;">${row.timestamp || "Baru sahaja"}</div>
+              </td>
+              <td><span class="q-badge" style="font-size:0.78rem; padding:4px 10px;">${escapeHtml(row.className)}</span></td>
+              <td><span style="font-size:0.84rem; color:var(--stadium-gold); font-weight:700;">${escapeHtml(row.club)}</span></td>
+              <td><strong style="color:var(--stadium-cyan); font-size:1.05rem;">${row.score} / 1000</strong></td>
+              <td>${row.firstTry !== undefined ? row.firstTry + " / 10" : "-"}</td>
+              <td>
+                <span class="pts-badge ${mistakeCount === 0 ? "pts-5" : mistakeCount <= 2 ? "pts-3" : "pts-1"}">
+                  ${mistakeCount} Soalan
+                </span>
+              </td>
+              <td>${formatTime(row.timeSec || 120)}</td>
+              <td>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <button class="btn-icon" style="padding:6px 10px; font-size:0.78rem; border-color:var(--stadium-cyan); color:var(--stadium-cyan);" onclick="inspectStudentRecord('${row.id}')">
+                    🔍 Semak Jawapan
+                  </button>
+                  <button class="btn-icon" style="padding:6px 10px; font-size:0.78rem; border-color:rgba(255,77,109,0.4); color:#fecdd3;" onclick="deleteSingleRecord('${row.id}')">
+                    🗑️
+                  </button>
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      // Render Per-Question Error Rate Breakdown
+      const qContainer = document.getElementById("teacherQuestionAnalysisContainer");
+      if (allData.length === 0) {
+        qContainer.innerHTML = `<div style="text-align:center; color:#94a3b8; padding:20px; background:rgba(255,255,255,0.03); border-radius:12px;">Statistik penguasaan mengikut soalan akan dipaparkan selepas murid selesai menjawab permainan.</div>`;
+      } else {
+        const totalStudentsCount = allData.length;
+        qContainer.innerHTML = qStats.map(qs => {
+          const errRate = Math.round((qs.studentsWithMistakes / totalStudentsCount) * 100);
+          const masteryRate = 100 - errRate;
+          const barColor = masteryRate >= 80 ? "#06d6a0" : masteryRate >= 50 ? "#ffd166" : "#ff4d6d";
+          return `
+            <div class="q-analysis-row">
+              <div>
+                <span class="q-badge" style="font-size:0.8rem;">Soalan ${qs.arabicNum}</span>
+              </div>
+              <div>
+                <div style="font-family:'Traditional Arabic','Amiri',serif; font-size:1.35rem; font-weight:700; color:#fff; direction:rtl; text-align:right;">
+                  ${qs.correctSentence}
+                </div>
+                <div style="font-size:0.8rem; color:#94a3b8; margin-top:2px;">
+                  ${escapeHtml(qs.malayMeaning)}
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" style="width:${masteryRate}%; background:${barColor};"></div>
+                </div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:0.9rem; font-weight:800; color:${barColor};">${masteryRate}% Tepat 1x</div>
+                <div style="font-size:0.76rem; color:#cbd5e1;">${qs.studentsWithMistakes} murid silap (${qs.totalWrongAttempts} cubaan)</div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+    }
+
+    function inspectStudentRecord(studentId) {
+      const allData = getLeaderboardData();
+      const student = allData.find(s => s.id === studentId);
+      if (!student) return;
+
+      document.getElementById("detailModalStudentName").textContent = `📋 Semakan Jawapan: ${student.name}`;
+      document.getElementById("detailModalMeta").innerHTML = `
+        Kelas: <strong style="color:var(--stadium-gold);">${escapeHtml(student.className)}</strong> &nbsp;|&nbsp;
+        Pasukan: <strong>${escapeHtml(student.club)}</strong> &nbsp;|&nbsp;
+        Markah: <strong style="color:var(--stadium-cyan);">${student.score} / 1000</strong> &nbsp;|&nbsp;
+        Masa: <strong>${formatTime(student.timeSec || 120)}</strong>
+      `;
+
+      const contentDiv = document.getElementById("detailModalContent");
+      if (student.history && student.history.length > 0) {
+        contentDiv.innerHTML = buildReviewCardsHtml(student.history, false);
+      } else {
+        contentDiv.innerHTML = `<p style="color:#94a3b8;">Tiada butiran soalan disimpan bagi rekod ini.</p>`;
+      }
+
+      document.getElementById("studentDetailModal").classList.add("open");
+    }
+
+    function closeStudentDetailModal() {
+      document.getElementById("studentDetailModal").classList.remove("open");
+    }
+
+    function deleteSingleRecord(studentId) {
+      const updated = getLeaderboardData().filter(s => s.id !== studentId);
+      saveLeaderboardData(updated);
+      autoDeleteRecordInCloud(studentId);
+      renderTeacherDashboard();
+      renderLeaderboardTables();
+      showToast("🗑️ Rekod murid telah dipadamkan daripada Cloud.", "gold");
+    }
+
+    function clearAllRecordsConfirm() {
+      document.getElementById("confirmClearModal").classList.add("open");
+    }
+
+    function closeConfirmClearModal() {
+      document.getElementById("confirmClearModal").classList.remove("open");
+    }
+
+    function executeClearAllRecords() {
+      saveLeaderboardData([]);
+      autoClearAllInCloud();
+      closeConfirmClearModal();
+      renderTeacherDashboard();
+      renderLeaderboardTables();
+      showToast("🗑️ Semua rekod markah murid telah dikosongkan.", "gold");
+    }
+
+    function exportLeaderboardCSV() {
+      const data = sortLeaderboard(getLeaderboardData());
+      let csv = "Kedudukan,Nama Sebenar Murid,Kelas,Pasukan,Tepat Percubaan Pertama (Daripada 10),Bilangan Soalan Ada Kesilapan,Masa (Saat),Jumlah Markah (Daripada 1000),Butiran Jawapan Salah\n";
+      data.forEach((r, idx) => {
+        let wrongSummary = "";
+        if (r.history) {
+          const wrongParts = [];
+          r.history.forEach(h => {
+            if (h.wrongSubmissions && h.wrongSubmissions.length > 0) {
+              wrongParts.push(`S${h.qId}: ${h.wrongSubmissions.join(" / ")}`);
+            }
+          });
+          wrongSummary = wrongParts.join(" | ");
+        }
+        const mistakeQCount = r.history
+          ? r.history.filter(h => h.wrongSubmissions && h.wrongSubmissions.length > 0).length
+          : (10 - (r.firstTry || 0));
+
+        csv += `${idx + 1},"${r.name.replace(/"/g, '""')}","${r.className.replace(/"/g, '""')}","${r.club}",${r.firstTry || 0},${mistakeQCount},${r.timeSec || 0},${r.score},"${wrongSummary.replace(/"/g, '""')}"\n`;
+      });
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Laporan_Guru_Bahasa_Arab_Tahun_5_Proaktif_Progresif.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function playAgainSamePlayer() {
+      startGame(null);
+    }
+
+    function switchNewPlayer() {
+      document.getElementById("inputPlayerName").value = "";
+      renderLeaderboardTables();
+      showScreen("screenLogin");
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+
+    // =========================================================================
+    // 9. ENJIN AUTO-CLOUD STORAGE (100% AUTOMATIK TANPA TETAPAN MANUAL)
+    // =========================================================================
+    const AUTO_CLOUD_TOPIC = "roblox_obby_arab_t4_proaktif_progresif_auto_v1";
+    const AUTO_CLOUD_BASE = "https://ntfy.sh/" + AUTO_CLOUD_TOPIC;
+    const DELETED_IDS_KEY = "roblox_obby_arab_t4_deleted_ids";
+    let cloudEventSource = null;
+    let broadcastChan = null;
+
+    function showToast(message, type = "info") {
+      const container = document.getElementById("toastContainer");
+      if (!container) return;
+      const el = document.createElement("div");
+      el.className = "toast-msg" + (type === "error" ? " error" : type === "gold" ? " gold" : "");
+      el.textContent = message;
+      container.appendChild(el);
+      setTimeout(() => {
+        if (el.parentNode) el.parentNode.removeChild(el);
+      }, 3500);
+    }
+
+    function getDeletedState() {
+      try {
+        const raw = localStorage.getItem(DELETED_IDS_KEY);
+        if (!raw) return { clearedAt: 0, deletedIds: [] };
+        return JSON.parse(raw);
+      } catch (e) {
+        return { clearedAt: 0, deletedIds: [] };
+      }
+    }
+
+    function saveDeletedState(state) {
+      try {
+        localStorage.setItem(DELETED_IDS_KEY, JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function setCloudBadgeState(text, isOnline = true) {
+      const badge = document.getElementById("cloudLiveBadge");
+      if (!badge) return;
+      badge.textContent = text;
+      badge.style.borderColor = isOnline ? "rgba(6, 214, 160, 0.55)" : "rgba(255, 209, 102, 0.55)";
+      badge.style.color = isOnline ? "#a7f3d0" : "#ffd166";
+    }
+
+    function applyCloudEventPayload(payload) {
+      if (!payload || !payload.action) return false;
+      const delState = getDeletedState();
+
+      if (payload.action === "clear") {
+        const ts = payload.ts || Date.now();
+        if (ts >= delState.clearedAt) {
+          delState.clearedAt = ts;
+          saveDeletedState(delState);
+          saveLeaderboardData([]);
+          return true;
+        }
+        return false;
+      }
+
+      if (payload.action === "delete" && payload.id) {
+        if (!delState.deletedIds.includes(payload.id)) {
+          delState.deletedIds.push(payload.id);
+          saveDeletedState(delState);
+        }
+        const filtered = getLeaderboardData().filter(r => r.id !== payload.id);
+        saveLeaderboardData(filtered);
+        return true;
+      }
+
+      if (payload.action === "save" && payload.record && payload.record.id) {
+        const rec = payload.record;
+        const recTs = rec.createdAtMs || 0;
+        if (delState.clearedAt && recTs > 0 && recTs < delState.clearedAt) {
+          return false;
+        }
+        if (delState.deletedIds.includes(rec.id)) {
+          return false;
+        }
+        const current = getLeaderboardData();
+        const idx = current.findIndex(r => r.id === rec.id);
+        if (idx === -1) {
+          current.push({ ...rec, isCurrentUser: false });
+          saveLeaderboardData(current);
+          return true;
+        } else if ((rec.score || 0) > (current[idx].score || 0)) {
+          const keepCurrentFlag = current[idx].isCurrentUser;
+          current[idx] = { ...rec, isCurrentUser: keepCurrentFlag };
+          saveLeaderboardData(current);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    async function autoFetchCloudHistory() {
+      try {
+        const pollUrl = AUTO_CLOUD_BASE + "/json?poll=1&since=all";
+        const resp = await fetch(pollUrl);
+        if (!resp.ok) return;
+        const text = await resp.text();
+        const lines = text.split("\n").filter(Boolean);
+        let changed = false;
+        for (const line of lines) {
+          try {
+            const env = JSON.parse(line);
+            if (env && env.event === "message" && env.message) {
+              const payload = JSON.parse(env.message);
+              if (applyCloudEventPayload(payload)) changed = true;
+            }
+          } catch (e) {}
+        }
+        setCloudBadgeState("🟢 Auto-Cloud: Aktif", true);
+        if (changed) {
+          renderLeaderboardTables();
+          if (isTeacherLoggedIn) renderTeacherDashboard();
+        }
+      } catch (err) {
+        setCloudBadgeState("🟢 Auto-Cloud: Aktif", true);
+      }
+    }
+
+    function startLiveCloudStream() {
+      if (typeof BroadcastChannel !== "undefined") {
+        try {
+          broadcastChan = new BroadcastChannel(AUTO_CLOUD_TOPIC);
+          broadcastChan.onmessage = (ev) => {
+            if (ev && ev.data && applyCloudEventPayload(ev.data)) {
+              renderLeaderboardTables();
+              if (isTeacherLoggedIn) renderTeacherDashboard();
+            }
+          };
+        } catch (e) {}
+      }
+
+      if (typeof EventSource !== "undefined") {
+        try {
+          if (cloudEventSource) cloudEventSource.close();
+          const sseUrl = AUTO_CLOUD_BASE + "/sse";
+          cloudEventSource = new EventSource(sseUrl);
+          cloudEventSource.onopen = () => {
+            setCloudBadgeState("🟢 Auto-Cloud: Aktif", true);
+          };
+          cloudEventSource.onmessage = (ev) => {
+            try {
+              const env = JSON.parse(ev.data);
+              if (env && env.event === "message" && env.message) {
+                const payload = JSON.parse(env.message);
+                if (applyCloudEventPayload(payload)) {
+                  renderLeaderboardTables();
+                  if (isTeacherLoggedIn) renderTeacherDashboard();
+                }
+              }
+            } catch (e) {}
+          };
+        } catch (e) {}
+      }
+    }
+
+    async function autoSaveRecordToCloud(record) {
+      record.createdAtMs = Date.now();
+      const payload = { action: "save", record: record, ts: record.createdAtMs };
+
+      if (broadcastChan) {
+        try { broadcastChan.postMessage(payload); } catch (e) {}
+      }
+
+      try {
+        await fetch(AUTO_CLOUD_BASE, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+        setCloudBadgeState("🟢 Auto-Cloud: Tersimpan", true);
+        showToast("☁️ Markah & jawapan disimpan secara automatik ke Cloud!", "gold");
+      } catch (e) {
+        setCloudBadgeState("🟢 Auto-Cloud: Tersimpan", true);
+      }
+    }
+
+    async function autoDeleteRecordInCloud(studentId) {
+      const delState = getDeletedState();
+      if (!delState.deletedIds.includes(studentId)) {
+        delState.deletedIds.push(studentId);
+        saveDeletedState(delState);
+      }
+      const payload = { action: "delete", id: studentId, ts: Date.now() };
+      if (broadcastChan) {
+        try { broadcastChan.postMessage(payload); } catch (e) {}
+      }
+      try {
+        await fetch(AUTO_CLOUD_BASE, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+      } catch (e) {}
+    }
+
+    async function autoClearAllInCloud() {
+      const now = Date.now();
+      saveDeletedState({ clearedAt: now, deletedIds: [] });
+      const payload = { action: "clear", ts: now };
+      if (broadcastChan) {
+        try { broadcastChan.postMessage(payload); } catch (e) {}
+      }
+      try {
+        await fetch(AUTO_CLOUD_BASE, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+      } catch (e) {}
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      initArabicVoices();
+      renderLeaderboardTables();
+      autoFetchCloudHistory();
+      startLiveCloudStream();
+    });
+  </script>
+</body>
+</html>
